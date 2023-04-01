@@ -1,0 +1,8 @@
+login page: http://localhost/dolibarr-develop/htdocs/
+main : http://localhost/dolibarr-develop/htdocs/index.php?mainmenu=home&leftmenu=home
+settings : http://localhost/dolibarr-develop/htdocs/admin/index.php?mainmenu=home&leftmenu=setup
+admin tools : http://localhost/dolibarr-develop/htdocs/admin/tools/index.php?mainmenu=home&leftmenu=admintools
+users : http://localhost/dolibarr-develop/htdocs/user/home.php?leftmenu=users
+third parties : http://localhost/dolibarr-develop/htdocs/societe/index.php?mainmenu=companies&leftmenu=
+products : http://localhost/dolibarr-develop/htdocs/product/index.php?mainmenu=products&leftmenu=
+hr : http://localhost/dolibarr-develop/htdocs/hrm/index.php?mainmenu=hrm&leftmenu=

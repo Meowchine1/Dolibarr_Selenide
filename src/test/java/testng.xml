@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="katya">
+    <test name="testTrying">
+        <parameter name="BROWSER" value="FIREFOX"/>
+        <parameter name="AUTHORIZATION" value="true"/>
+        <classes>
+            <class name="baseTest.Start"/>
+            <class name="tests.functionalTests.TestTest"/>
+
+        </classes>
+
+    </test>
+</suite>
