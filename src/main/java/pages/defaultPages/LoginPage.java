@@ -12,8 +12,7 @@ public class LoginPage extends Page {
     private static final SelenideElement
             USERNAME_INPUT_FIELD = $(By.id("username")),
             PASSWORD_INPUT_FIELD = $(By.id("password")),
-            SUBMIT_BUTTON = $(By.cssSelector("[type='submit']")),
-            FORGET_PASSWORD_BUTTON = $(By.xpath("//*[contains(text(),'Забыли')]"));///!!!russian???
+            SUBMIT_BUTTON = $(By.cssSelector("[type='submit']"));
 
     public LoginPage(String href) {
         super(href);
@@ -25,5 +24,10 @@ public class LoginPage extends Page {
         SUBMIT_BUTTON.click();
 
         return ApplicationRoute.getInformationPanelPage();
+    }
+
+    public void loginByAdmin() throws PageTypeException { // данные убрать
+        LoginPage loginPage = ApplicationRoute.getLoginPage();
+        loginPage.login("root", "8962615k");
     }
 }

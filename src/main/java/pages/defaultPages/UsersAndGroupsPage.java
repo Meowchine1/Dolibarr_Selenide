@@ -2,11 +2,10 @@ package pages.defaultPages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import config.Hrefs;
 import exceptions.PageTypeException;
 import org.openqa.selenium.By;
 import pages.Page;
-import pages.extraPages.BaseModule;
-import config.Hrefs;
 import webApplication.ApplicationRoute;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -49,8 +48,8 @@ public class UsersAndGroupsPage extends Page  {
                                          String address, String zipcode, String phone, Boolean isAdmin, Boolean isEmployee,
                                          String fax, String email, String city) throws PageTypeException {
         Selenide.open(Hrefs.CREATE_USER_HREF);
-        LASTNAME_INPUT_FIELD.setValue(name);
-        FIRSTNAME_INPUT_FIELD.setValue(lastname);
+        LASTNAME_INPUT_FIELD.setValue(lastname);
+        FIRSTNAME_INPUT_FIELD.setValue(name);
         LOGIN_INPUT_FIELD.setValue(login);
         setIsAdmin(isAdmin);
         setIsEmployee(isEmployee);

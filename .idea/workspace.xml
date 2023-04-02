@@ -4,7 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39df4013-640f-4a0b-ab90-e1938a8d9ae7" name="Changes" comment="" />
+    <list default="true" id="39df4013-640f-4a0b-ab90-e1938a8d9ae7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/testDb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/database/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/DatabaseMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/database/DatabaseMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/PagePool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/PagePool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/UsersAndGroupsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/UsersAndGroupsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/baseTest/CommonMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/baseTest/CommonMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/baseTest/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/baseTest/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/data/Database/DatabaseAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/ExternalUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/factory/models/ExternalUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/data/inputReader/InnerUserFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/inputReader/InnerUserFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/data/inputReader/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/inputReader/Reader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/UserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/UserTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,8 +37,18 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2NpXbjHNniLqDPjasciB0hGb0yb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -27,9 +59,99 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "jdk.selected.JAVA_MODULE": "corretto-15",
+    "last_opened_file_path": "C:/Users/Воронина/IdeaProjects/testTESTNGdevend/src/test/java/data",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.51609194",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend\src\test\java\data" />
+      <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend\src\test\resources" />
+      <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend\src\test\java" />
+      <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend\src\main\resources" />
+      <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend\src\main\java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend\src" />
+      <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend\src\main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="tests.functionalTests" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.testDb">
+    <configuration name="testDb" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tests.functionalTests.testDb" />
+      <module name="testTESTNGdevend.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.functionalTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Testing" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;Testing&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="C:/Users/Воронина/IdeaProjects/testTESTNGdevend/src/test/java/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="testTESTNGdevend.test" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/java/testng.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Testing" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="testTESTNGdevend.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Testing" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.testDb" />
+        <item itemvalue="TestNG.C:/Users/Воронина/IdeaProjects/testTESTNGdevend/src/test/java/testng.xml" />
+        <item itemvalue="TestNG.Testing" />
+        <item itemvalue="Gradle.Testing" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -40,5 +162,30 @@
       <updated>1680362074454</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/data/inputReader/InnerUserFactory.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/data/dataProvider/DataProviderClass.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="data.inputReader.InnerUserFactory" memberName="parameters" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

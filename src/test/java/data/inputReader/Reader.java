@@ -39,7 +39,7 @@ public class Reader {
         List<String> rows = new ArrayList<>();
         while (iterator.hasNext()) {
             row = iterator.next();
-            for (int i = 1; i < columnNames.size(); i++) {
+            for (int i = 0; i < columnNames.size(); i++) { // name нулевой
                 String key = columnNames.get(i);
                 Cell cell = row.getCell(i);
                 String value = formatter.formatCellValue(cell);

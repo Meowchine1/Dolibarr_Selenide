@@ -1,7 +1,5 @@
 package pages;
 
-import browser.Browser;
-import browser.BrowserType;
 import config.Hrefs;
 import exceptions.PageTypeException;
 import pages.defaultPages.AdminToolsPage;

@@ -8,6 +8,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+
+/*
+password min length -- 12
+login
+
+ */
 public class InnerUserFactory {
     private HashMap<String, ArrayList<String>> parameters = new HashMap<>();
     private static final Faker FAKER = new Faker();
@@ -57,27 +63,28 @@ public class InnerUserFactory {
 
     private String getString(String keyword) {
         String paramName;
-        int paramValue;
+        int size;
         if (keyword.contains("_")) {
             String[] tmp = keyword.split("_");
             paramName = tmp[0];
-            paramValue = Integer.parseInt(tmp[1]);
-            return switch (paramName) {
-                case ("name") -> Stream.generate(() -> String.valueOf("a")).limit(paramValue).collect(Collectors.joining());
-                case ("phone") -> Stream.generate(() -> String.valueOf("a")).limit(paramValue).collect(Collectors.joining());
-                case ("email") -> Stream.generate(() -> String.valueOf("a")).limit(paramValue).collect(Collectors.joining());
-                case ("address") -> Stream.generate(() -> String.valueOf("a")).limit(paramValue).collect(Collectors.joining());
-                case ("zipcode") -> Stream.generate(() -> String.valueOf("a")).limit(paramValue).collect(Collectors.joining());
-                case ("login") -> Stream.generate(() -> String.valueOf("a")).limit(paramValue).collect(Collectors.joining());
-                case ("lastname") -> Stream.generate(() -> String.valueOf("a")).limit(paramValue).collect(Collectors.joining());
+            size = Integer.parseInt(tmp[1]);
+            return switch (paramName) { // одинаковве данные
+                case ("name") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
+                case ("phone") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
+                case ("email") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
+                case ("address") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
+                case ("zipcode") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
+                case ("login") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
+                case ("lastname") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
+                case ("password") -> getPassword(size);
                 default -> "";
 
             };
         } else {
-            paramValue = 10;
+            size = 12;
 
             return switch (keyword) {
-                case ("space") -> StringUtils.repeat(" ", paramValue);
+                case ("space") -> StringUtils.repeat(" ", size);
                 case ("name") -> FAKER.name().name();
                 case ("email") -> FAKER.internet().emailAddress();
                 case ("address") -> FAKER.address().fullAddress();
@@ -87,7 +94,7 @@ public class InnerUserFactory {
                 case ("jobTitle") -> FAKER.job().title();
                 case ("lastname") -> FAKER.name().lastName();
                 case ("login") -> FAKER.name().username();
-                case ("password") -> FAKER.internet().password();
+                case ("password") -> getPassword(size);
                 case ("fax") -> FAKER.phoneNumber().phoneNumber();
                 default -> "";
             };
@@ -96,6 +103,19 @@ public class InnerUserFactory {
 
     private Boolean getBoolean(String keyword) {
         return keyword.equals("true");
+    }
+
+    private String getPassword(int length){
+        int leftLimit = 48; // numeral '0'
+        int rightLimit = 122; // letter 'z'
+        Random random = new Random();
+
+        String generatedString = random.ints(leftLimit, rightLimit + 1)
+                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+                .limit(length)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+        return generatedString;
     }
 
 }

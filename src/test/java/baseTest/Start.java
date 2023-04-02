@@ -7,12 +7,13 @@ import exceptions.BrowserTypeException;
 import exceptions.PageTypeException;
 import exceptions.XmlConfigureException;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import pages.defaultPages.LoginPage;
 import utils.StringToEnum;
 import webApplication.ApplicationRoute;
+
+import static baseTest.CommonMethods.LoginByAdmin;
 
 public class Start {
     private Browser instance;
@@ -24,8 +25,7 @@ public class Start {
         instance = BrowserPool.getInstance(type);
         instance.initDriver();
         if(authorization){
-             LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
-             loginPage.login("root", "8962615k");
+            LoginByAdmin();
         }
     }
 
