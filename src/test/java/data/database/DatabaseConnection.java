@@ -9,11 +9,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseConnection {
-    private static String dbName = "dolibarr";
-    private static String username = "root";
-    private static String password = "root";
-    private static String url = "jdbc:mysql://:3306/dolibarr";
-    private static String pathToBackup = "C:/wamp64/bin/mysql/mysql5.7.36/data/backup/dolib_back.sql";
+    private static final String dbName = "dolibarr";
+    private static final String host = "localhost";
+    private static final String username = "root";
+    private static final String password = "root";
+    private static final String url = "jdbc:mysql://:3306/dolibarr";
+    private static final String pathToBackup = "C:/wamp64/bin/mysql/mysql5.7.36/data/backup/dolib_back.sql";
     private static DatabaseConnection instance;
     protected Connection connection;
 
@@ -46,7 +47,9 @@ public class DatabaseConnection {
        Statement statement = connection.createStatement();
        statement.executeUpdate("DROP DATABASE " + dbName);
        statement.executeUpdate("CREATE DATABASE " + dbName);
-       Process process = new ProcessBuilder("mysql", "-u", username, "-p", password, dbName, "<", pathToBackup ).start(); // не работает
+        ProcessBuilder pb = new ProcessBuilder("mysql", "--user=" + username, "--password=" + password, "--host=" + host,
+                "--execute=source " + pathToBackup, dbName);
+        Process process = pb.start();
     }
 
     public void closeConnection() throws SQLException {

@@ -12,22 +12,38 @@ import java.sql.Statement;
 */
 public class DatabaseMethods {
 
-    private final DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
-    String selectQuery = "select * from dolibarr.llx_user;";
+    private DatabaseConnection databaseConnection;
+    private static  Statement statement;
 
     public DatabaseMethods() throws SQLException {
+        databaseConnection = DatabaseConnection.getInstance();
+        statement = databaseConnection.connection.createStatement();
     }
 
     public void getAllUsers() throws SQLException {
-        Statement statement = databaseConnection.connection.createStatement();
-        ResultSet rs = statement.executeQuery(selectQuery);
+        String getAllUsersQuery = "select * from dolibarr.llx_user;";
+        ResultSet rs = statement.executeQuery(getAllUsersQuery);
         while (rs.next()){
-            System.out.println("id = " + rs.getString("login"));
+            System.out.println("login = " + rs.getString("login"));
+            System.out.println("password = " + rs.getString("pass"));
+        }
+    }
+
+    public void getUserByLogin(String login) throws SQLException {
+        String getUserByLoginQuery = "select * from llx_user where login='" + login + "';";
+        ResultSet rs = statement.executeQuery(getUserByLoginQuery);
+        if (rs != null)
+        {
+            System.out.println("true");
+        }
+        else{
+            System.out.println("false");
         }
     }
 
     public void setBackup() throws SQLException, IOException {
         databaseConnection.setBackup();
+
     }
 
     public void closeConnection() throws SQLException {

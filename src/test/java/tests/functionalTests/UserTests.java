@@ -15,13 +15,17 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static baseTest.CommonMethods.loginByAdmin;
+
 
 public class UserTests extends Start {
 
-    @Test(enabled = false)
+    // нужна стартовая авторизация
+    @Test()
     public void TestingFunc() throws PageTypeException, IOException, SQLException {
         //проверка экспорта эксель файла успешно
-        InnerUserFactory innerUserFactory = new InnerUserFactory("src/test/java/data/inputReader/invalid_user_out.xlsx");
+        loginByAdmin();
+        InnerUserFactory innerUserFactory = new InnerUserFactory("src/test/java/data/inputReader/valid_user_out.xlsx");
         ArrayList<InnerUser> innerUserList = new ArrayList<>();
         innerUserFactory.userGeneration(innerUserList);
         UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
@@ -35,6 +39,8 @@ public class UserTests extends Start {
         databaseMethods.getAllUsers();
     }
 
+
+    // не нужна стартовая авторизация
     @Test(dataProvider = "validUsers", dataProviderClass = DataProviderClass.class)
     public void ValidUsersRegistration(InnerUser user) throws IOException, PageTypeException {
         // залогиниться через рут
@@ -44,7 +50,7 @@ public class UserTests extends Start {
         // войти в аккаунт
         // таким образом мы проверяем, что регистрация прошла успешно
 //        LogEntries logEntries = (LogEntries) WebDriverRunner.getWebDriver().manage().logs();
-        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        /*LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
         loginPage.loginByAdmin();
         UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
         usersAndGroupsPage.createUser(user.getName(), user.getLastname(), user.getLogin(), user.getPassword(),
@@ -57,7 +63,7 @@ public class UserTests extends Start {
         InformationPanelPage informationPanelPage = loginPage.login(username, password);
         ApplicationRoute.logOut(); // clean
         // assert that true
-      //  System.out.println(logEntries);
+      //  System.out.println(logEntries);*/
 
     }
 }
