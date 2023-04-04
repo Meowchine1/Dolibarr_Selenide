@@ -9,7 +9,13 @@ public class testDb {
 
     public static void main(String[] args) throws SQLException, IOException {
         DatabaseMethods databaseMethods = new DatabaseMethods();
-        databaseMethods.setBackup();
-        databaseMethods.closeConnection();
+        String login = "rootttt";
+       if (databaseMethods.isUserExist(login)){
+           System.out.println("true");
+           }
+       else{
+           System.out.println("false");
+       }
+
     }
 }

@@ -12,12 +12,6 @@ import pages.defaultPages.settings.SettingsPage;
 
 public class ApplicationRoute {
 
-     public static LoginPage logOut() throws PageTypeException {
-          Selenide.open(Hrefs.LOGOUT_URL);
-          LoginPage loginPage = (LoginPage) PagePool.getPage(PageType.LOGIN_PAGE);
-          loginPage.open();
-          return loginPage;
-     }
      public static AdminToolsPage getAndOpenAdminToolsPage() throws PageTypeException {
           AdminToolsPage adminToolsPage = (AdminToolsPage) PagePool.getPage(PageType.ADMIN_TOOLS_PAGE);
           adminToolsPage.open();

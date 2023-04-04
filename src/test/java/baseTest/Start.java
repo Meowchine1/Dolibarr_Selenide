@@ -7,18 +7,20 @@ import data.database.DatabaseMethods;
 import exceptions.BrowserTypeException;
 import exceptions.PageTypeException;
 import exceptions.XmlConfigureException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import utils.StringToEnum;
-
 import java.io.IOException;
 import java.sql.SQLException;
-
 import static baseTest.CommonMethods.loginByAdmin;
 import static baseTest.CommonMethods.openLoginPage;
 
 public class Start {
+    /* public static void main(String[] args) throws SQLException, IOException {
+        DatabaseMethods databaseMethods = new DatabaseMethods();
+        databaseMethods.setBackup();
+    }
+    */
+
     private Browser instance;
     @BeforeClass
     @Parameters({"BROWSER", "AUTHORIZATION"})
@@ -33,12 +35,15 @@ public class Start {
             openLoginPage();
         }
     }
-
-    @AfterClass
+    @AfterMethod
+    public void clearCookies(){
+        instance.clearCoolies();
+    }
+    @AfterSuite
     public void tearDown() throws SQLException, IOException {
         DatabaseMethods databaseMethods = new DatabaseMethods();
         databaseMethods.setBackup();
         databaseMethods.closeConnection();
-        instance.close();
+        //instance.close();
     }
 }

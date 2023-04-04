@@ -16,4 +16,9 @@ public class CommonMethods {
 
     }
 
+    public static void createUser(){
+
+
+    }
+
 }

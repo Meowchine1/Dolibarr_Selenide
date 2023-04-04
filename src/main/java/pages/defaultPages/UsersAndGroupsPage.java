@@ -1,5 +1,6 @@
 package pages.defaultPages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import config.Hrefs;
@@ -26,7 +27,8 @@ public class UsersAndGroupsPage extends Page  {
     PHONE_INPUT_FIELD = $(By.xpath("//input[@name='user_mobile']")),
     FAX_INPUT_FIELD = $(By.xpath("//input[@name='office_fax']")),
     EMAIL_INPUT_FIELD = $(By.xpath("//input[@name='email']")),
-    SAVE_USER_BUTTON = $(By.xpath("//input[@name='save']"));
+    SAVE_USER_BUTTON = $(By.xpath("//input[@name='save']")),
+    ERROR_LABEL = $(".jnotify-message");
 
 
     public UsersAndGroupsPage(String href) {
@@ -102,5 +104,9 @@ public class UsersAndGroupsPage extends Page  {
 
     public UsersAndGroupsPage getProperties() {
         return null;
+    }
+
+    public void errorLabelExist(){
+        ERROR_LABEL.shouldBe(Condition.visible);
     }
 }

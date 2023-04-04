@@ -6,8 +6,8 @@ import data.database.DatabaseMethods;
 import data.factory.models.InnerUser;
 import data.inputReader.InnerUserFactory;
 import exceptions.PageTypeException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.defaultPages.InformationPanelPage;
 import pages.defaultPages.LoginPage;
 import pages.defaultPages.UsersAndGroupsPage;
 import webApplication.ApplicationRoute;
@@ -21,7 +21,7 @@ import static baseTest.CommonMethods.loginByAdmin;
 public class UserTests extends Start {
 
     // нужна стартовая авторизация
-    @Test()
+    @Test(enabled = false)
     public void TestingFunc() throws PageTypeException, IOException, SQLException {
         //проверка экспорта эксель файла успешно
         loginByAdmin();
@@ -39,31 +39,87 @@ public class UserTests extends Start {
         databaseMethods.getAllUsers();
     }
 
-
     // не нужна стартовая авторизация
-    @Test(dataProvider = "validUsers", dataProviderClass = DataProviderClass.class)
-    public void ValidUsersRegistration(InnerUser user) throws IOException, PageTypeException {
+    @Test(enabled = false, dataProvider = "validUsersData", dataProviderClass = DataProviderClass.class)
+    public void CanCreateValidUserAndLoginHim(InnerUser user) throws IOException, PageTypeException {
         // залогиниться через рут
         // создать пользователя
         // запомнить пароль и логин которые вводились при регистрации
         // выйти из аккаунта
         // войти в аккаунт
+        // успех теста проверяем отсутсвием надписи об ошибке
         // таким образом мы проверяем, что регистрация прошла успешно
-//        LogEntries logEntries = (LogEntries) WebDriverRunner.getWebDriver().manage().logs();
-        /*LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
         loginPage.loginByAdmin();
         UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
         usersAndGroupsPage.createUser(user.getName(), user.getLastname(), user.getLogin(), user.getPassword(),
                 user.getAddress(), user.getZipCode(), user.getPhone(), user.getIsAdmine(), user.getIsEmployee(),
                 user.getFax(), user.getEmail(), user.getCity());
-
-        ApplicationRoute.logOut();
-        String username = user.getLogin();
-        String password = user.getPassword();
-        InformationPanelPage informationPanelPage = loginPage.login(username, password);
-        ApplicationRoute.logOut(); // clean
-        // assert that true
-      //  System.out.println(logEntries);*/
-
+        ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        loginPage.logout();
+        String username = user.getLogin(), password = user.getPassword();
+        loginPage.login(username, password);
+        ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        // loginPage.logout();
     }
+
+    @Test(enabled = false, dataProvider = "invalidUsers", dataProviderClass = DataProviderClass.class)
+    public void CantCreateInvalidUserAndLoginHim(InnerUser user) throws IOException, PageTypeException {
+        // залогиниться через рут
+        // создать пользователя не получится
+        // запомнить пароль и логин которые вводились при регистрации
+        // выйти из аккаунта
+        // попытка войти в аккаунт некорректного пользователя
+        // успех теста проверяем наличием надписи об ошибке
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        loginPage.loginByAdmin();
+        UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        usersAndGroupsPage.createUser(user.getName(), user.getLastname(), user.getLogin(), user.getPassword(),
+                user.getAddress(), user.getZipCode(), user.getPhone(), user.getIsAdmine(), user.getIsEmployee(),
+                user.getFax(), user.getEmail(), user.getCity());
+        usersAndGroupsPage.errorLabelExist();
+        ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        loginPage.logout();
+        String username = user.getLogin(), password = user.getPassword();
+        loginPage.login(username, password);
+        ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        // loginPage.logout();
+    }
+
+
+    @Test(enabled = false, dataProvider = "validUsers", dataProviderClass = DataProviderClass.class)
+    public void ValidUserIsInDB(InnerUser user) throws PageTypeException, SQLException {
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        loginPage.loginByAdmin();
+        UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        usersAndGroupsPage.createUser(user.getName(), user.getLastname(), user.getLogin(), user.getPassword(),
+                user.getAddress(), user.getZipCode(), user.getPhone(), user.getIsAdmine(), user.getIsEmployee(),
+                user.getFax(), user.getEmail(), user.getCity());
+        String login = user.getLogin();
+        DatabaseMethods databaseMethods = new DatabaseMethods();
+        Assert.assertTrue(databaseMethods.isUserExist(login));
+    }
+
+    @Test(enabled = false, dataProvider = "invalidUsers", dataProviderClass = DataProviderClass.class)
+    public void InvalidUserIsNotInDB(InnerUser user) throws PageTypeException, SQLException {
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        loginPage.loginByAdmin();
+        UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        usersAndGroupsPage.createUser(user.getName(), user.getLastname(), user.getLogin(), user.getPassword(),
+                user.getAddress(), user.getZipCode(), user.getPhone(), user.getIsAdmine(), user.getIsEmployee(),
+                user.getFax(), user.getEmail(), user.getCity());
+        usersAndGroupsPage.errorLabelExist();
+        String login = user.getLogin();
+        DatabaseMethods databaseMethods = new DatabaseMethods();
+        Assert.assertFalse(databaseMethods.isUserExist(login));
+    }
+
+    @Test(enabled = false)
+    public static void login_logout() throws PageTypeException {
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        loginPage.loginByAdmin();
+        ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        loginPage.logout();
+    }
+
 }

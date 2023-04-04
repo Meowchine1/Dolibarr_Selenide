@@ -40,17 +40,17 @@ public class InnerUserFactory {
                 String key = entry.getKey();
                 ArrayList<String> value = entry.getValue();
                 switch (key) {
-                    case ("name") -> innerUser.setName(getString(value.get(i)));
-                    case ("lastname") -> innerUser.setLastname(getString(value.get(i)));
-                    case ("login") -> innerUser.setLogin(getString(value.get(i)));
-                    case ("password") -> innerUser.setPassword(getString(value.get(i)));
-                    case ("email") -> innerUser.setEmail(getString(value.get(i)));
-                    case ("city") -> innerUser.setCity(getString(value.get(i)));
-                    case ("phone") -> innerUser.setPhone(getString(value.get(i)));
-                    case ("jobTitle") -> innerUser.setJobTitle(getString(value.get(i)));
-                    case ("address") -> innerUser.setAddress(getString(value.get(i)));
-                    case ("zipCode") -> innerUser.setZipCode(getString(value.get(i)));
-                    case ("fax") -> innerUser.setFax(getString(value.get(i)));
+                    case ("name") -> innerUser.setName(getKeywordValue(value.get(i)));
+                    case ("lastname") -> innerUser.setLastname(getKeywordValue(value.get(i)));
+                    case ("login") -> innerUser.setLogin(getKeywordValue(value.get(i)));
+                    case ("password") -> innerUser.setPassword(getKeywordValue(value.get(i)));
+                    case ("email") -> innerUser.setEmail(getKeywordValue(value.get(i)));
+                    case ("city") -> innerUser.setCity(getKeywordValue(value.get(i)));
+                    case ("phone") -> innerUser.setPhone(getKeywordValue(value.get(i)));
+                    case ("jobTitle") -> innerUser.setJobTitle(getKeywordValue(value.get(i)));
+                    case ("address") -> innerUser.setAddress(getKeywordValue(value.get(i)));
+                    case ("zipCode") -> innerUser.setZipCode(getKeywordValue(value.get(i)));
+                    case ("fax") -> innerUser.setFax(getKeywordValue(value.get(i)));
                     case ("isAdmine") -> innerUser.setIsAdmine(getBoolean(value.get(i)));
                     case ("isEmployee") -> innerUser.setIsEmployee(getBoolean(value.get(i)));
                 }
@@ -61,7 +61,7 @@ public class InnerUserFactory {
 
     }
 
-    private String getString(String keyword) {
+    private String getKeywordValue(String keyword) {
         String paramName;
         int size;
         if (keyword.contains("_")) {
@@ -69,14 +69,14 @@ public class InnerUserFactory {
             paramName = tmp[0];
             size = Integer.parseInt(tmp[1]);
             return switch (paramName) { // одинаковве данные
-                case ("name") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
-                case ("phone") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
-                case ("email") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
-                case ("address") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
-                case ("zipcode") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
-                case ("login") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
-                case ("lastname") -> Stream.generate(() -> String.valueOf("a")).limit(size).collect(Collectors.joining());
-                case ("password") -> getPassword(size);
+                case ("name") -> getRandomString(size);  // буквы
+                case ("phone") -> getRandomString(size); // формат телефона
+                case ("email") -> getRandomString(size); // формат мейла
+                case ("address") -> getRandomString(size);
+                case ("zipcode") -> getRandomString(size); // цифры
+                case ("login") -> getRandomString(size);
+                case ("lastname") -> getRandomString(size); // буквы
+                case ("password") -> getRandomString(size);
                 default -> "";
 
             };
@@ -94,7 +94,7 @@ public class InnerUserFactory {
                 case ("jobTitle") -> FAKER.job().title();
                 case ("lastname") -> FAKER.name().lastName();
                 case ("login") -> FAKER.name().username();
-                case ("password") -> getPassword(size);
+                case ("password") -> getRandomString(size);
                 case ("fax") -> FAKER.phoneNumber().phoneNumber();
                 default -> "";
             };
@@ -105,7 +105,7 @@ public class InnerUserFactory {
         return keyword.equals("true");
     }
 
-    private String getPassword(int length){
+    private String getRandomString(int length){
         int leftLimit = 48; // numeral '0'
         int rightLimit = 122; // letter 'z'
         Random random = new Random();

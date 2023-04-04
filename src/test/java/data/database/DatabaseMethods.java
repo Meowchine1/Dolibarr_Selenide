@@ -29,16 +29,10 @@ public class DatabaseMethods {
         }
     }
 
-    public void getUserByLogin(String login) throws SQLException {
+    public boolean isUserExist(String login) throws SQLException {
         String getUserByLoginQuery = "select * from llx_user where login='" + login + "';";
         ResultSet rs = statement.executeQuery(getUserByLoginQuery);
-        if (rs != null)
-        {
-            System.out.println("true");
-        }
-        else{
-            System.out.println("false");
-        }
+        return rs.next();
     }
 
     public void setBackup() throws SQLException, IOException {
