@@ -62,8 +62,17 @@ public class ApplicationRoute {
 
      public static AdminToolsPage getAdminToolsPage() throws PageTypeException {
           return (AdminToolsPage) PagePool.getPage(PageType.ADMIN_TOOLS_PAGE);
-
      }
+
+     public static  ThirdPartiesPage getAndOpenThirdPartiesPage() throws PageTypeException {
+          ThirdPartiesPage thirdPartiesPage = (ThirdPartiesPage) PagePool.getPage(PageType.THIRD_PARTIES_PAGE);
+          thirdPartiesPage.open();
+          return thirdPartiesPage;
+     }
+     public static  ThirdPartiesPage getThirdPartiesPage() throws PageTypeException {
+          return (ThirdPartiesPage) PagePool.getPage(PageType.THIRD_PARTIES_PAGE);
+     }
+
      public static  InformationPanelPage getInformationPanelPage() throws PageTypeException {
           return (InformationPanelPage) PagePool.getPage(PageType.INFORMATION_PANEL_PAGE);
      }

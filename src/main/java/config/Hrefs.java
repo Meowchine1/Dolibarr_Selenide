@@ -26,4 +26,10 @@ public class Hrefs {
     public static final String CREATE_GROUP_HREF = BASE_PAGE_URL + "/user/group/card.php?leftmenu=users&action=create";
     public static final String GROUP_LIST_HREF = BASE_PAGE_URL + "/user/group/list.php?leftmenu=users"; // ERROR
 
+    public static final String CREATE_THIRD_PARTIES_HREF = BASE_PAGE_URL + "/societe/card.php?action=create&leftmenu=";
+    public static final String THIRD_PARTIES_LIST_HREF = BASE_PAGE_URL + "/societe/list.php?leftmenu=thirdparties";
+    public static final String CREATE_CONTACT_HREF = BASE_PAGE_URL + "/contact/card.php?leftmenu=contacts&action=create";
+    public static final String CONATC_LIST_HREF = BASE_PAGE_URL + "/contact/list.php?leftmenu=contacts";
+
+
 }

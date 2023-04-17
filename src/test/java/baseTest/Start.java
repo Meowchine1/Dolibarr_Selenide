@@ -15,14 +15,8 @@ import static baseTest.CommonMethods.loginByAdmin;
 import static baseTest.CommonMethods.openLoginPage;
 
 public class Start {
-    /* public static void main(String[] args) throws SQLException, IOException {
-        DatabaseMethods databaseMethods = new DatabaseMethods();
-        databaseMethods.setBackup();
-    }
-    */
-
     private Browser instance;
-    @BeforeClass
+    @BeforeMethod
     @Parameters({"BROWSER", "AUTHORIZATION"})
     public void start(String browser, boolean authorization) throws XmlConfigureException, BrowserTypeException, PageTypeException {
         BrowserType type = StringToEnum.convertBrowserType(browser);

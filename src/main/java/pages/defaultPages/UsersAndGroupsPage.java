@@ -12,8 +12,6 @@ import webApplication.ApplicationRoute;
 import static com.codeborne.selenide.Selenide.$;
 
 public class UsersAndGroupsPage extends Page  {
-
-    //CREATE USER FIELDS
     private static final SelenideElement
     LASTNAME_INPUT_FIELD = $(By.xpath("//input[@name='lastname']")),
     FIRSTNAME_INPUT_FIELD = $(By.xpath("//input[@name='firstname']")),
@@ -28,17 +26,70 @@ public class UsersAndGroupsPage extends Page  {
     FAX_INPUT_FIELD = $(By.xpath("//input[@name='office_fax']")),
     EMAIL_INPUT_FIELD = $(By.xpath("//input[@name='email']")),
     SAVE_USER_BUTTON = $(By.xpath("//input[@name='save']")),
-    ERROR_LABEL = $(".jnotify-message");
+    ERROR_LABEL = $(".jnotify-message"),
+    USER_RIGHTS_LABEL = $("#rights");
 
+    //SEARCH FIELDS
+    public static final SelenideElement
+    SEARCH_LOGIN_INPUT_FIELD = $(By.xpath(".//input[@name='search_login']")),
+    SEARCH_LASTNAME_INPUT_FIELD = $(By.xpath(".//input[@name='search_lastname']")),
+    SEARCH_FIRSTNAME_INPUT_FIELD = $(By.xpath(".//input[@name='search_firstname']")),
+    SEARCH_PHONE_INPUT_FIELD = $(By.xpath(".//input[@name='search_phonemobile']")),
+    SEARCH_MAIL_INPUT_FIELD = $(By.xpath(".//input[@name='search_email']")),
+    SEARCH_BUTTON = $(By.xpath(".//button[@name='button_search_x']"));
 
+    //TABLE
+    private static int table_iterator = 3;
+    private static SelenideElement START_TABLE_ROW = $(By.xpath(".//table//tr[" + table_iterator + "]")),
+            START_TABLE_HREF = $(By.xpath(".//table//tr["+table_iterator+"]//a"));
+
+    public boolean searchDataShouldBeExist(){
+        START_TABLE_ROW.shouldBe(Condition.exist);
+        return true;
+    }
     public UsersAndGroupsPage(String href) {
         super(href);
     }
 
-    public UsersAndGroupsPage getUserList() {
+    public UsersAndGroupsPage setSearchLastnameField(String value) throws PageTypeException {
+        SEARCH_LASTNAME_INPUT_FIELD.val(value);
+        return ApplicationRoute.getUsersAndGroupsPage();
+    }
+    public UsersAndGroupsPage setSearchFirstnameField(String value) throws PageTypeException {
+        SEARCH_FIRSTNAME_INPUT_FIELD.val(value);
+        return ApplicationRoute.getUsersAndGroupsPage();
+    }
+    public UsersAndGroupsPage setSearchPhoneField(String value) throws PageTypeException {
+        SEARCH_PHONE_INPUT_FIELD.val(value);
+        return ApplicationRoute.getUsersAndGroupsPage();
+    }
+    public UsersAndGroupsPage setSearchMailField(String value) throws PageTypeException {
+        SEARCH_MAIL_INPUT_FIELD.val(value);
+        return ApplicationRoute.getUsersAndGroupsPage();
+    }
+    public UsersAndGroupsPage setSearchLoginField(String value) throws PageTypeException {
+        SEARCH_LOGIN_INPUT_FIELD.val(value);
+        return ApplicationRoute.getUsersAndGroupsPage();
+    }
+
+    public UsersAndGroupsPage getSearchResults() throws PageTypeException {
+        SEARCH_BUTTON.click();
+        return ApplicationRoute.getUsersAndGroupsPage();
+    }
+    public void getListInf(){
+
+        while(START_TABLE_ROW.is(Condition.exist)){
+            System.out.println(START_TABLE_HREF.text());
+            table_iterator +=1;
+            START_TABLE_HREF = $(By.xpath(".//table//tr["+table_iterator+"]//a"));
+            START_TABLE_ROW = $(By.xpath(".//table//tr[" + table_iterator + "]"));
+        }
+        table_iterator = 3;
+    }
+    public UsersAndGroupsPage getUserList() throws PageTypeException {
         Selenide.open(Hrefs.USER_LIST_HREF);
 
-        return null;
+        return ApplicationRoute.getUsersAndGroupsPage();
     }
 
     public UsersAndGroupsPage getGroupList() {
@@ -104,6 +155,13 @@ public class UsersAndGroupsPage extends Page  {
 
     public UsersAndGroupsPage getProperties() {
         return null;
+    }
+
+    public void showUserList(){
+        Selenide.open(Hrefs.USER_LIST_HREF);
+    }
+    public void showGroupList(){
+        Selenide.open(Hrefs.GROUP_LIST_HREF);
     }
 
     public void errorLabelExist(){

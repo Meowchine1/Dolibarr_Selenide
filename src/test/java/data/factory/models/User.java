@@ -15,6 +15,8 @@ public abstract class User {
     zipCode,
     city,
     phone,
-    jobTitle;
+    jobTitle,
+    login,
+    password;
 
 }

@@ -14,7 +14,7 @@ public class DatabaseConnection {
     private static final String username = "root";
     private static final String password = "root";
     private static final String url = "jdbc:mysql://:3306/dolibarr";
-    private static final String pathToBackup = "C:/wamp64/bin/mysql/mysql5.7.36/data/backup/dolib_back.sql";
+    private static final String pathToBackup = "C:/wamp64/bin/mysql/mysql5.7.36/data/backup/dolibarr.sql";
     private static DatabaseConnection instance;
     protected Connection connection;
 

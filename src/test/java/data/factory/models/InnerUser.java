@@ -8,8 +8,6 @@ import lombok.Setter;
 @Getter
 public class InnerUser extends User{
     String  lastname,
-            login,
-            password,
             fax;
     Boolean isAdmine;
     Boolean isEmployee;

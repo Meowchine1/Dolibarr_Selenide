@@ -21,26 +21,16 @@ import static baseTest.CommonMethods.loginByAdmin;
 public class UserTests extends Start {
 
     // нужна стартовая авторизация
-    @Test(enabled = false)
-    public void TestingFunc() throws PageTypeException, IOException, SQLException {
-        //проверка экспорта эксель файла успешно
-        loginByAdmin();
-        InnerUserFactory innerUserFactory = new InnerUserFactory("src/test/java/data/inputReader/valid_user_out.xlsx");
-        ArrayList<InnerUser> innerUserList = new ArrayList<>();
-        innerUserFactory.userGeneration(innerUserList);
+    @Test(enabled = true, dataProvider = "validUsers", dataProviderClass = DataProviderClass.class)
+    public void TestingFunc(InnerUser user) throws PageTypeException, IOException, SQLException {
         UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
-        for(InnerUser innerUser : innerUserList){
-            usersAndGroupsPage.createUser(innerUser.getName(), innerUser.getLastname(), innerUser.getLogin(),
-                    innerUser.getPassword(), innerUser.getAddress(), innerUser.getZipCode(), innerUser.getPhone(),
-                    innerUser.getIsAdmine(), innerUser.getIsEmployee(), innerUser.getFax(), innerUser.getEmail(), innerUser.getCity());
-
-        }
-        DatabaseMethods databaseMethods = new DatabaseMethods();
-        databaseMethods.getAllUsers();
+        usersAndGroupsPage.createUser(user.getName(), user.getLastname(), user.getLogin(), user.getPassword(),
+                user.getAddress(), user.getZipCode(), user.getPhone(), user.getIsAdmine(), user.getIsEmployee(),
+                user.getFax(), user.getEmail(), user.getCity());
     }
 
     // не нужна стартовая авторизация
-    @Test(enabled = false, dataProvider = "validUsersData", dataProviderClass = DataProviderClass.class)
+    @Test(enabled = false, dataProvider = "validUsers", dataProviderClass = DataProviderClass.class)
     public void CanCreateValidUserAndLoginHim(InnerUser user) throws IOException, PageTypeException {
         // залогиниться через рут
         // создать пользователя
