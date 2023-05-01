@@ -10,42 +10,67 @@ import java.util.Objects;
 
 public class DataProviderClass {
     private static Object[][] realUsers;
+    private static ArrayList<String> realLogins = new ArrayList<>();
+    private static ArrayList<String> realNames = new ArrayList<>();
+    private static ArrayList<String> realSurnames = new ArrayList<>();
+    private static ArrayList<String> realPhones = new ArrayList<>();
 
-    private static boolean isUserNotEmpty(InnerUser user){
-        if(user.getName().length() > 0 & !user.getName().contains(" ")){
-         if(user.getLogin().length() > 0 & !user.getLogin().contains(" ")){
-             if(user.getLastname().length() > 0 & !user.getLastname().contains(" ")){
-                 if(user.getEmail().length() > 0 & !user.getEmail().contains(" ")){
-                     return user.getPhone().length() > 0 & !user.getPhone().contains(" ");
-                 }
-             }
-         }
-        }
-        return false;
+    private static boolean ifNameIsNotEmpty(InnerUser user) {
+        return user.getName().length() > 0 & !user.getName().contains(" ");
     }
+
+    private static boolean ifSurameIsNotEmpty(InnerUser user){
+        return user.getLastname().length() > 0 & !user.getLastname().contains(" ");
+    }
+    private static boolean ifLoginIsNotEmpty(InnerUser user){
+        return user.getLogin().length() > 0 & !user.getLogin().contains(" ");
+    }
+    private static boolean ifPhoneIsNotEmpty(InnerUser user){
+        return user.getPhone().length() > 0 & !user.getPhone().contains(" ");
+    }
+
     @DataProvider(name = "validUsers")
     public static Object[][] validUsersData() throws IOException {
         InnerUserFactory validUserFactory = new InnerUserFactory("src/test/java/data/inputReader/valid_user_out.xlsx");
         ArrayList<InnerUser> validUserList = new ArrayList<>();
         validUserFactory.userGeneration(validUserList);
-        Object[][] result = new Object[validUserList.size()][1];
-        ArrayList<InnerUser> normalUsers = new ArrayList<>();
+        realUsers = new Object[validUserList.size()][1];
         int i = 0;
         for (InnerUser user : validUserList) {
-            result[i][0] = user;
+            realUsers[i][0] = user;
 
-           /* if(isUserNotEmpty(user)){
-                normalUsers.add(user);
-            }*/
+            if (ifNameIsNotEmpty(user)){
+                realNames.add(user.getName());
+            }
+            if(ifSurameIsNotEmpty(user)) {
+                realSurnames.add(user.getLastname());
+            }
+            if(ifLoginIsNotEmpty(user)){
+                realLogins.add(user.getLogin());
+            }
+            if(ifPhoneIsNotEmpty(user)){
+                realPhones.add(user.getPhone());
+            }
             i++;
         }
-        realUsers = result;
-        return result;
-
-    }
-    @DataProvider(name= "searchUser")
-    public static Object[][] searchUserData(){
         return realUsers;
+    }
+
+    @DataProvider(name= "searchUserLogin")
+    public static Object[][] searchUserLogin(){
+        return fromArrayToObject(realLogins);
+    }
+    @DataProvider(name= "searchUserName")
+    public static Object[][] searchUserName(){
+        return fromArrayToObject(realNames);
+    }
+    @DataProvider(name= "searchUserSurname")
+    public static Object[][] searchUserSurname(){
+        return fromArrayToObject(realSurnames);
+    }
+    @DataProvider(name= "searchUserPhone")
+    public static Object[][] searchUserPhone(){
+        return fromArrayToObject(realPhones);
     }
 
     @DataProvider(name = "invalidUsers")
@@ -62,6 +87,16 @@ public class DataProviderClass {
         }
         return result;
 
+    }
+
+    private static Object[][] fromArrayToObject(ArrayList<String> inputData){
+        Object[][] data = new Object[inputData.size()][1];
+        int i = 0;
+        for(String value : inputData){
+            data[i][0] = value;
+            i++;
+        }
+        return data;
     }
 
 

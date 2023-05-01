@@ -40,13 +40,31 @@ public class UsersAndGroupsPage extends Page  {
 
     //TABLE
     private static int table_iterator = 3;
-    private static SelenideElement START_TABLE_ROW = $(By.xpath(".//table//tr[" + table_iterator + "]")),
+    private static SelenideElement TABLE_ROW = $(By.xpath(".//table//tr[" + table_iterator + "]")),
+    TABLE_ROW_LOGIN = $(By.xpath(".//table//tr[" + table_iterator + "]//span[@class='nopadding usertext']")),
+    TABLE_ROW_SURNAME = $(By.xpath(".//table//tr[" + table_iterator + "]//td[@class='tdoverflowmax150'][1]")),
+    TABLE_ROW_NAME = $(By.xpath(".//table//tr[" + table_iterator + "]//td[@class='tdoverflowmax150'][2]")),
+    TABLE_ROW_PHONE = $(By.xpath(".//table//tr[" + table_iterator + "]//td[@class='tdoverflowmax125'][3]")),
             START_TABLE_HREF = $(By.xpath(".//table//tr["+table_iterator+"]//a"));
 
-    public boolean searchDataShouldBeExist(){
-        START_TABLE_ROW.shouldBe(Condition.exist);
-        return true;
+
+    public boolean searchByLogin(String login){
+        TABLE_ROW.shouldBe(Condition.exist);
+        return TABLE_ROW_LOGIN.text().equals(login);
     }
+    public boolean searchByName(String name){
+        TABLE_ROW.shouldBe(Condition.exist);
+        return TABLE_ROW_NAME.text().equals(name);
+    }
+    public boolean searchBySurname(String surname){
+        TABLE_ROW.shouldBe(Condition.exist);
+        return TABLE_ROW_SURNAME.text().equals(surname);
+    }
+    public boolean searchByPhone(String phone){
+        TABLE_ROW.shouldBe(Condition.exist);
+        return TABLE_ROW_PHONE.text().equals(phone);
+    }
+
     public UsersAndGroupsPage(String href) {
         super(href);
     }
@@ -78,11 +96,11 @@ public class UsersAndGroupsPage extends Page  {
     }
     public void getListInf(){
 
-        while(START_TABLE_ROW.is(Condition.exist)){
+        while(TABLE_ROW.is(Condition.exist)){
             System.out.println(START_TABLE_HREF.text());
             table_iterator +=1;
             START_TABLE_HREF = $(By.xpath(".//table//tr["+table_iterator+"]//a"));
-            START_TABLE_ROW = $(By.xpath(".//table//tr[" + table_iterator + "]"));
+            TABLE_ROW = $(By.xpath(".//table//tr[" + table_iterator + "]"));
         }
         table_iterator = 3;
     }

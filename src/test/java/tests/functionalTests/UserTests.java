@@ -56,7 +56,7 @@ public class UserTests extends Start {
     @Test(enabled = false, dataProvider = "invalidUsers", dataProviderClass = DataProviderClass.class)
     public void CantCreateInvalidUserAndLoginHim(InnerUser user) throws IOException, PageTypeException {
         // залогиниться через рут
-        // создать пользователя не получится
+        // создать неправильного пользователя не получится
         // запомнить пароль и логин которые вводились при регистрации
         // выйти из аккаунта
         // попытка войти в аккаунт некорректного пользователя

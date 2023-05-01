@@ -5,33 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39df4013-640f-4a0b-ab90-e1938a8d9ae7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/config/UserType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/ThirdPartiesPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/SearchTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/ThirdPartiesTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/Hrefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/Hrefs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/PagePool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/PagePool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/PageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/PageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/LoginPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/UsersAndGroupsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/UsersAndGroupsPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/usersAndGroups/CreateGroupPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/usersAndGroups/CreateUserPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/usersAndGroups/GroupListPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/usersAndGroups/UserListPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/extraPages/BaseModule.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/extraPages/HRPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/extraPages/ProductsPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/extraPages/ThirdPartiesPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/webApplication/ApplicationRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webApplication/ApplicationRoute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/baseTest/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/baseTest/Start.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/data/dataProvider/DataProviderClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/dataProvider/DataProviderClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/database/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/dataGeneration/FixtureGeneration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/InnerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/factory/models/InnerUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/factory/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/inputReader/Start.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/SearchTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/SearchTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/UserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/UserTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -203,25 +180,24 @@
       <option name="project" value="LOCAL" />
       <updated>1680643617796</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="search tests">
+      <created>1681766107276</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681766107276</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="database backup" />
     <MESSAGE value="database backup is done" />
     <MESSAGE value="3 tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="3 tests" />
+    <MESSAGE value="search tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="search tests" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/data/dataProvider/DataProviderClass.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="data.inputReader.InnerUserFactory" memberName="parameters" />
