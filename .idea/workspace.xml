@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="39df4013-640f-4a0b-ab90-e1938a8d9ae7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/LoginPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/UsersAndGroupsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/UsersAndGroupsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/data/dataProvider/DataProviderClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/dataProvider/DataProviderClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/SearchTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/SearchTests.java" afterDir="false" />
@@ -187,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681766107276</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="good search tests">
+      <created>1682975212828</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682975212828</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -195,7 +203,8 @@
     <MESSAGE value="database backup is done" />
     <MESSAGE value="3 tests" />
     <MESSAGE value="search tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="search tests" />
+    <MESSAGE value="good search tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="good search tests" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -1,6 +1,7 @@
 package pages.defaultPages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import config.Hrefs;
@@ -9,7 +10,9 @@ import org.openqa.selenium.By;
 import pages.Page;
 import webApplication.ApplicationRoute;
 
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class UsersAndGroupsPage extends Page  {
     private static final SelenideElement
@@ -26,7 +29,8 @@ public class UsersAndGroupsPage extends Page  {
     FAX_INPUT_FIELD = $(By.xpath("//input[@name='office_fax']")),
     EMAIL_INPUT_FIELD = $(By.xpath("//input[@name='email']")),
     SAVE_USER_BUTTON = $(By.xpath("//input[@name='save']")),
-    ERROR_LABEL = $(".jnotify-message"),
+    CREATE_USER_ERROR_LABEL = $(".jnotify-message"),
+    LOGIN_ERROR_LABEL = $(".error"),
     USER_RIGHTS_LABEL = $("#rights");
 
     //SEARCH FIELDS
@@ -36,7 +40,15 @@ public class UsersAndGroupsPage extends Page  {
     SEARCH_FIRSTNAME_INPUT_FIELD = $(By.xpath(".//input[@name='search_firstname']")),
     SEARCH_PHONE_INPUT_FIELD = $(By.xpath(".//input[@name='search_phonemobile']")),
     SEARCH_MAIL_INPUT_FIELD = $(By.xpath(".//input[@name='search_email']")),
-    SEARCH_BUTTON = $(By.xpath(".//button[@name='button_search_x']"));
+    SEARCH_BUTTON = $(By.xpath(".//button[@name='button_search_x']")),
+
+    DELETE_USER_BTN = $(withText("Удалить")),
+    TURN_OFF_USER_BTN = $(withText("Выключать")),
+    TURN_ON_USER_BTN = $(withText("Возобновить")),
+    TURN_ACCEPT_BTN = $(withText("Да")),
+    USER_RIGHTS_BTN = $("#rights");
+
+    ElementsCollection RIGHTS =  $$(By.xpath(".//td[@class='center']/a"));
 
     //TABLE
     private static int table_iterator = 3;
@@ -47,20 +59,103 @@ public class UsersAndGroupsPage extends Page  {
     TABLE_ROW_PHONE = $(By.xpath(".//table//tr[" + table_iterator + "]//td[@class='tdoverflowmax125'][3]")),
             START_TABLE_HREF = $(By.xpath(".//table//tr["+table_iterator+"]//a"));
 
+    private static final ElementsCollection TABLE_ELEMENTS = $$(By.xpath(".//span[@class='nopadding usertext']"));
+    private static ElementsCollection TABLE_HREFS = $$(By.xpath(".//td[@class='nowraponall tdoverflowmax150']/a"));
 
-    public boolean searchByLogin(String login){
+    private final int watchUsersData = 1,
+            createUser = 2,
+            deleteUser = 4,
+            changeOwnPassword = 6;
+
+    public boolean allowWatchUserData(String login){
+        if (clickByUser(login)) {
+            USER_RIGHTS_BTN.click();
+            RIGHTS.get(watchUsersData).click();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean allowCreateUser(String login){
+        if (clickByUser(login)) {
+            USER_RIGHTS_BTN.click();
+            RIGHTS.get(createUser).click();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean allowDeleteUser(String login){
+        if (clickByUser(login)) {
+            USER_RIGHTS_BTN.click();
+            RIGHTS.get(deleteUser).click();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean allowChangeOwnPassword(String login){
+        if (clickByUser(login)){
+        USER_RIGHTS_BTN.click();
+        RIGHTS.get(changeOwnPassword).click();
+        return true;
+        }
+        return false;
+    }
+
+    public boolean clickByUser(String login){
+        int href_index = 0;
+        for(SelenideElement el: TABLE_ELEMENTS){
+            if(el.text().equals(login)){
+                TABLE_HREFS.get(href_index).click();
+                return true;
+            }
+            href_index ++;
+        }
+        return false;
+    }
+
+    public boolean deleteUser(String login){
+        if (clickByUser(login)){
+            DELETE_USER_BTN.click();
+            return true;
+        }
+        return false;
+
+    }
+
+    public boolean turnOffUser(String login){
+        if (clickByUser(login)){
+            TURN_OFF_USER_BTN.click();
+            TURN_ACCEPT_BTN.click();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean turnOnUser(String login){
+        if (clickByUser(login)){
+            TURN_ON_USER_BTN.click();
+            TURN_ACCEPT_BTN.click();
+            return true;
+        }
+        return false;
+    }
+
+
+    public boolean assertionSearchByLogin(String login){
         TABLE_ROW.shouldBe(Condition.exist);
         return TABLE_ROW_LOGIN.text().equals(login);
     }
-    public boolean searchByName(String name){
+    public boolean assertionSearchByName(String name){
         TABLE_ROW.shouldBe(Condition.exist);
         return TABLE_ROW_NAME.text().equals(name);
     }
-    public boolean searchBySurname(String surname){
+    public boolean assertionSearchBySurname(String surname){
         TABLE_ROW.shouldBe(Condition.exist);
         return TABLE_ROW_SURNAME.text().equals(surname);
     }
-    public boolean searchByPhone(String phone){
+    public boolean assertionSearchByPhone(String phone){
         TABLE_ROW.shouldBe(Condition.exist);
         return TABLE_ROW_PHONE.text().equals(phone);
     }
@@ -71,26 +166,31 @@ public class UsersAndGroupsPage extends Page  {
 
     public UsersAndGroupsPage setSearchLastnameField(String value) throws PageTypeException {
         SEARCH_LASTNAME_INPUT_FIELD.val(value);
+        getSearchResults();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
     public UsersAndGroupsPage setSearchFirstnameField(String value) throws PageTypeException {
         SEARCH_FIRSTNAME_INPUT_FIELD.val(value);
+        getSearchResults();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
     public UsersAndGroupsPage setSearchPhoneField(String value) throws PageTypeException {
         SEARCH_PHONE_INPUT_FIELD.val(value);
+        getSearchResults();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
     public UsersAndGroupsPage setSearchMailField(String value) throws PageTypeException {
         SEARCH_MAIL_INPUT_FIELD.val(value);
+        getSearchResults();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
     public UsersAndGroupsPage setSearchLoginField(String value) throws PageTypeException {
         SEARCH_LOGIN_INPUT_FIELD.val(value);
+        getSearchResults();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
 
-    public UsersAndGroupsPage getSearchResults() throws PageTypeException {
+    private UsersAndGroupsPage getSearchResults() throws PageTypeException {
         SEARCH_BUTTON.click();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
@@ -104,7 +204,7 @@ public class UsersAndGroupsPage extends Page  {
         }
         table_iterator = 3;
     }
-    public UsersAndGroupsPage getUserList() throws PageTypeException {
+    public UsersAndGroupsPage openUserListPage() throws PageTypeException {
         Selenide.open(Hrefs.USER_LIST_HREF);
 
         return ApplicationRoute.getUsersAndGroupsPage();
@@ -182,7 +282,10 @@ public class UsersAndGroupsPage extends Page  {
         Selenide.open(Hrefs.GROUP_LIST_HREF);
     }
 
-    public void errorLabelExist(){
-        ERROR_LABEL.shouldBe(Condition.visible);
+    public void createUserErrorLabelExist(){
+        CREATE_USER_ERROR_LABEL.shouldBe(Condition.visible);
+    }
+    public void loginUserErrorLabelExist(){
+        LOGIN_ERROR_LABEL.shouldBe(Condition.visible);
     }
 }

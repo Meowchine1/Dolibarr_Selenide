@@ -12,36 +12,36 @@ public class SearchTests extends Start {
     public void validSearchByName(String name) throws PageTypeException {
         UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
         usersAndGroupsPage
-                .getUserList()
+                .openUserListPage()
                 .setSearchFirstnameField(name)
                 .getSearchResults();
-        Assert.assertTrue(usersAndGroupsPage.searchByName(name));
+        Assert.assertTrue(usersAndGroupsPage.assertionSearchByName(name));
     }
 
     @Test(dataProvider = "searchUserSurname", dataProviderClass = DataProviderClass.class)
     public void validSearchBySurname(String surname) throws PageTypeException {
         UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
         usersAndGroupsPage
-                .getUserList()
+                .openUserListPage()
                 .setSearchLastnameField(surname);
-        Assert.assertTrue(usersAndGroupsPage.searchBySurname(surname));
+        Assert.assertTrue(usersAndGroupsPage.assertionSearchBySurname(surname));
     }
     @Test(dataProvider = "searchUserLogin", dataProviderClass = DataProviderClass.class)
     public void validSearchByLogin(String login) throws PageTypeException {
         UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
         usersAndGroupsPage
-                .getUserList()
+                .openUserListPage()
                 .setSearchLoginField(login);
-        Assert.assertTrue(usersAndGroupsPage.searchByLogin(login));
+        Assert.assertTrue(usersAndGroupsPage.assertionSearchByLogin(login));
 
     }
     @Test(dataProvider = "searchUserPhone", dataProviderClass = DataProviderClass.class)
     public void validSearchByPhone(String phone) throws PageTypeException {
         UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
         usersAndGroupsPage
-                .getUserList()
+                .openUserListPage()
                 .setSearchPhoneField(phone);
-        Assert.assertTrue(usersAndGroupsPage.searchByPhone(phone));
+        Assert.assertTrue(usersAndGroupsPage.assertionSearchByPhone(phone));
     }
 
 

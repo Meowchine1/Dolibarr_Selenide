@@ -4,7 +4,6 @@ import baseTest.Start;
 import data.dataProvider.DataProviderClass;
 import data.database.DatabaseMethods;
 import data.factory.models.InnerUser;
-import data.inputReader.InnerUserFactory;
 import exceptions.PageTypeException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,16 +12,13 @@ import pages.defaultPages.UsersAndGroupsPage;
 import webApplication.ApplicationRoute;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-
-import static baseTest.CommonMethods.loginByAdmin;
 
 
 public class UserTests extends Start {
 
     // нужна стартовая авторизация
     @Test(enabled = true, dataProvider = "validUsers", dataProviderClass = DataProviderClass.class)
-    public void TestingFunc(InnerUser user) throws PageTypeException, IOException, SQLException {
+    public void _CreateUsers(InnerUser user) throws PageTypeException, IOException, SQLException {
         UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
         usersAndGroupsPage.createUser(user.getName(), user.getLastname(), user.getLogin(), user.getPassword(),
                 user.getAddress(), user.getZipCode(), user.getPhone(), user.getIsAdmine(), user.getIsEmployee(),
@@ -31,14 +27,7 @@ public class UserTests extends Start {
 
     // не нужна стартовая авторизация
     @Test(enabled = false, dataProvider = "validUsers", dataProviderClass = DataProviderClass.class)
-    public void CanCreateValidUserAndLoginHim(InnerUser user) throws IOException, PageTypeException {
-        // залогиниться через рут
-        // создать пользователя
-        // запомнить пароль и логин которые вводились при регистрации
-        // выйти из аккаунта
-        // войти в аккаунт
-        // успех теста проверяем отсутсвием надписи об ошибке
-        // таким образом мы проверяем, что регистрация прошла успешно
+    public void CreateValidUserAndLoginHim(InnerUser user) throws IOException, PageTypeException {
         LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
         loginPage.loginByAdmin();
         UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
@@ -46,36 +35,23 @@ public class UserTests extends Start {
                 user.getAddress(), user.getZipCode(), user.getPhone(), user.getIsAdmine(), user.getIsEmployee(),
                 user.getFax(), user.getEmail(), user.getCity());
         ApplicationRoute.getAndOpenUsersAndGroupsPage();
-        loginPage.logout();
-        String username = user.getLogin(), password = user.getPassword();
-        loginPage.login(username, password);
-        ApplicationRoute.getAndOpenUsersAndGroupsPage();
-        // loginPage.logout();
+        logoutAndLogin(user.getLogin(), user.getPassword());
+        loginPage.errorLabelIsNotExist();
     }
 
     @Test(enabled = false, dataProvider = "invalidUsers", dataProviderClass = DataProviderClass.class)
     public void CantCreateInvalidUserAndLoginHim(InnerUser user) throws IOException, PageTypeException {
-        // залогиниться через рут
-        // создать неправильного пользователя не получится
-        // запомнить пароль и логин которые вводились при регистрации
-        // выйти из аккаунта
-        // попытка войти в аккаунт некорректного пользователя
-        // успех теста проверяем наличием надписи об ошибке
         LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
         loginPage.loginByAdmin();
         UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
         usersAndGroupsPage.createUser(user.getName(), user.getLastname(), user.getLogin(), user.getPassword(),
                 user.getAddress(), user.getZipCode(), user.getPhone(), user.getIsAdmine(), user.getIsEmployee(),
                 user.getFax(), user.getEmail(), user.getCity());
-        usersAndGroupsPage.errorLabelExist();
+        usersAndGroupsPage.createUserErrorLabelExist();
         ApplicationRoute.getAndOpenUsersAndGroupsPage();
-        loginPage.logout();
-        String username = user.getLogin(), password = user.getPassword();
-        loginPage.login(username, password);
-        ApplicationRoute.getAndOpenUsersAndGroupsPage();
-        // loginPage.logout();
+        logoutAndLogin(user.getLogin(), user.getPassword());
+        loginPage.errorLabelIsExist();
     }
-
 
     @Test(enabled = false, dataProvider = "validUsers", dataProviderClass = DataProviderClass.class)
     public void ValidUserIsInDB(InnerUser user) throws PageTypeException, SQLException {
@@ -98,18 +74,153 @@ public class UserTests extends Start {
         usersAndGroupsPage.createUser(user.getName(), user.getLastname(), user.getLogin(), user.getPassword(),
                 user.getAddress(), user.getZipCode(), user.getPhone(), user.getIsAdmine(), user.getIsEmployee(),
                 user.getFax(), user.getEmail(), user.getCity());
-        usersAndGroupsPage.errorLabelExist();
+        usersAndGroupsPage.createUserErrorLabelExist();
         String login = user.getLogin();
         DatabaseMethods databaseMethods = new DatabaseMethods();
         Assert.assertFalse(databaseMethods.isUserExist(login));
     }
 
-    @Test(enabled = false)
-    public static void login_logout() throws PageTypeException {
+
+    @Test(dataProvider = "oneValidUser", dataProviderClass = DataProviderClass.class)
+    public void TurnOffUser(InnerUser innerUser) throws PageTypeException {
         LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
         loginPage.loginByAdmin();
+        UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        Assert.assertTrue(usersAndGroupsPage
+                .openUserListPage()
+                .turnOffUser(innerUser.getLogin()));
+        logoutAndLogin(innerUser.getLogin(), innerUser.getPassword());
+        loginPage.errorLabelIsExist();
+    }
+
+    @Test(dataProvider = "oneValidUser", dataProviderClass = DataProviderClass.class)
+    public void TurnOnUser(InnerUser innerUser) throws PageTypeException {
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        loginPage.loginByAdmin();
+        UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        Assert.assertTrue(usersAndGroupsPage
+                .openUserListPage()
+                .turnOnUser(innerUser.getLogin()));
+        logoutAndLogin(innerUser.getLogin(), innerUser.getPassword());
+        loginPage.errorLabelIsNotExist();
+    }
+
+
+    @Test(dataProvider = "oneValidUser", dataProviderClass = DataProviderClass.class)
+    public void UserCanWatchOthersData(InnerUser innerUser) throws PageTypeException {
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        loginPage.loginByAdmin();
+        UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        Assert.assertTrue(usersAndGroupsPage
+                .openUserListPage()
+                .allowWatchUserData(innerUser.getLogin()));
+        // это была подготовка
+        //
+        //теперь соответсвущее действие
+        logoutAndLogin(innerUser.getLogin(), innerUser.getPassword());
         ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        usersAndGroupsPage.showUserList();
+
+
+    }
+
+    @Test(dataProvider = "oneValidUser", dataProviderClass = DataProviderClass.class)
+    public void UserCannotWatchOthersData(InnerUser innerUser) throws PageTypeException {
+
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        loginPage.loginByAdmin();
+        UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        Assert.assertTrue(usersAndGroupsPage
+                .openUserListPage()
+                .allowWatchUserData(innerUser.getLogin()));
+        //
+        logoutAndLogin(innerUser.getLogin(), innerUser.getPassword());
+    }
+
+    @Test(dataProvider = "oneValidUser", dataProviderClass = DataProviderClass.class)
+    public void UserCanCreateUser(InnerUser innerUser) throws PageTypeException {
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        loginPage.loginByAdmin();
+        UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        Assert.assertTrue(usersAndGroupsPage
+                .openUserListPage()
+                .allowCreateUser(innerUser.getLogin()));
+        //
+        logoutAndLogin(innerUser.getLogin(), innerUser.getPassword());
+
+    }
+
+    @Test(dataProvider = "oneValidUser", dataProviderClass = DataProviderClass.class)
+    public void UserCannotCreateUser(InnerUser innerUser) throws PageTypeException {
+
+
+    }
+    @Test(dataProvider = "oneValidUser", dataProviderClass = DataProviderClass.class)
+    public void UserCanDeleteUsers(InnerUser innerUser) throws PageTypeException {
+
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        loginPage.loginByAdmin();
+        UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        Assert.assertTrue(usersAndGroupsPage
+                .openUserListPage()
+                .allowDeleteUser(innerUser.getLogin()));
+        //
+        logoutAndLogin(innerUser.getLogin(), innerUser.getPassword());
+    }
+
+    @Test(dataProvider = "oneValidUser", dataProviderClass = DataProviderClass.class)
+    public void UserCannotDeleteUsers(InnerUser innerUser) throws PageTypeException {
+
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        loginPage.loginByAdmin();
+        UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        Assert.assertTrue(usersAndGroupsPage
+                .openUserListPage()
+                .allowDeleteUser(innerUser.getLogin()));
+        //
+        logoutAndLogin(innerUser.getLogin(), innerUser.getPassword());
+    }
+
+    @Test(dataProvider = "oneValidUser", dataProviderClass = DataProviderClass.class)
+    public void UserCanChangePassword(InnerUser innerUser) throws PageTypeException {
+
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        loginPage.loginByAdmin();
+        UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        Assert.assertTrue(usersAndGroupsPage
+                .openUserListPage()
+                .allowChangeOwnPassword(innerUser.getLogin()));
+        //
+        logoutAndLogin(innerUser.getLogin(), innerUser.getPassword());
+    }
+
+    @Test(dataProvider = "oneValidUser", dataProviderClass = DataProviderClass.class)
+    public void UserCannotChangePassword(InnerUser innerUser) throws PageTypeException {
+
+
+    }
+
+
+
+
+
+    @Test(dataProvider = "oneValidUser", dataProviderClass = DataProviderClass.class)
+    public void DeleteUser(InnerUser innerUser) throws PageTypeException {
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
+        loginPage.loginByAdmin();
+        UsersAndGroupsPage usersAndGroupsPage = ApplicationRoute.getAndOpenUsersAndGroupsPage();
+        Assert.assertTrue(usersAndGroupsPage
+                .openUserListPage()
+                .deleteUser(innerUser.getLogin()));
+        logoutAndLogin(innerUser.getLogin(), innerUser.getPassword());
+        loginPage.errorLabelIsExist();
+    }
+
+
+    private void logoutAndLogin(String login, String password) throws PageTypeException {
+        LoginPage loginPage = ApplicationRoute.getAndOpenLoginPage();
         loginPage.logout();
+        loginPage.login(login, password);
     }
 
 }

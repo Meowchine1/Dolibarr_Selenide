@@ -29,6 +29,14 @@ public class DataProviderClass {
         return user.getPhone().length() > 0 & !user.getPhone().contains(" ");
     }
 
+    @DataProvider(name = "oneValidUser")
+    public static Object[][] oneValidUser(){
+        Object[][] res = new Object[1][1];
+        res[0][0] = realUsers[0][0];
+        return res;
+    }
+
+
     @DataProvider(name = "validUsers")
     public static Object[][] validUsersData() throws IOException {
         InnerUserFactory validUserFactory = new InnerUserFactory("src/test/java/data/inputReader/valid_user_out.xlsx");
