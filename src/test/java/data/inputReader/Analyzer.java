@@ -1,12 +1,12 @@
 package data.inputReader;
 import com.github.javafaker.Faker;
-import data.factory.models.InnerUser;
+import models.Company;
+import models.InnerUser;
 import org.apache.commons.lang.StringUtils;
+import utils.Config;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 /*
@@ -14,18 +14,47 @@ password min length -- 12
 login
 
  */
-public class InnerUserFactory {
+public class Analyzer {
     private HashMap<String, ArrayList<String>> parameters = new HashMap<>();
     private static final Faker FAKER = new Faker();
     String FILE_PATH;
 
-    public InnerUserFactory(String FILE_PATH) {
+    public Analyzer(String FILE_PATH) {
         this.FILE_PATH = FILE_PATH;
     }
 
     private void readXlsxFile() throws IOException {
         Reader reader = new Reader(FILE_PATH);
         parameters = reader.getHashMapFromXlsxFile();
+    }
+
+    public void companyGeneration(ArrayList<Company> companyList) throws IOException {
+        readXlsxFile();
+        int i = 0;
+        Map.Entry<String, ArrayList<String>> first = parameters.entrySet().iterator().next();
+        int parametr_num = first.getValue().size();
+        while(i < parametr_num){
+            Company company = new Company();
+            for(Map.Entry<String, ArrayList<String>> entry : parameters.entrySet()) {
+                String key = entry.getKey();
+                ArrayList<String> value = entry.getValue();
+                switch (key) {
+                    case ("name") -> company.setName(getKeywordValue(value.get(i)));
+                    case ("email") -> company.setEmail(getKeywordValue(value.get(i)));
+                    case ("city") -> company.setCity(getKeywordValue(value.get(i)));
+                    case ("phone") -> company.setPhone(getKeywordValue(value.get(i)));
+                    case ("address") -> company.setAddress(getKeywordValue(value.get(i)));
+                    case ("zipCode") -> company.setZipCode(getKeywordValue(value.get(i)));
+                    case ("fax") -> company.setFax(getKeywordValue(value.get(i)));
+                    case ("logo") -> company.setLogoPath(getLogoPath(value.get(i)));
+                }
+
+            }
+            companyList.add(company);
+            i++;
+
+        }
+
     }
 
     public void userGeneration(ArrayList<InnerUser> innerUserList) throws IOException {
@@ -117,5 +146,10 @@ public class InnerUserFactory {
                 .toString();
         return generatedString;
     }
+
+    private String getLogoPath(String imagePath) {
+        return Config.PATH_TO_DIRECTORY + imagePath ;
+    }
+
 
 }

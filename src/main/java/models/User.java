@@ -1,9 +1,6 @@
-package data.factory.models;
+package models;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.text.DateFormat;
 
 @Setter
 @Getter

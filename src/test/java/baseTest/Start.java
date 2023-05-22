@@ -16,6 +16,7 @@ import static baseTest.CommonMethods.openLoginPage;
 
 public class Start {
     private Browser instance;
+
     @BeforeMethod
     @Parameters({"BROWSER", "AUTHORIZATION"})
     public void start(String browser, boolean authorization) throws XmlConfigureException, BrowserTypeException, PageTypeException {
@@ -23,10 +24,10 @@ public class Start {
         instance = BrowserPool.getInstance(type);
         instance.initDriver();
         if(authorization){
-            loginByAdmin();
+            CommonMethods.loginByAdmin();
         }
         else{
-            openLoginPage();
+            CommonMethods.openLoginPage();
         }
     }
     @AfterMethod

@@ -1,6 +1,7 @@
 package pages.defaultPages.settings;
 
 import exceptions.PageTypeException;
+import pages.defaultPages.CompanyPage;
 import pages.Page;
 import webApplication.ApplicationRoute;
 

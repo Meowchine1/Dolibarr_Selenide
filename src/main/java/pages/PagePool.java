@@ -3,7 +3,6 @@ package pages;
 import config.Hrefs;
 import exceptions.PageTypeException;
 import pages.defaultPages.*;
-import pages.defaultPages.settings.CompanyPage;
 import pages.defaultPages.settings.ModulesPage;
 import pages.defaultPages.settings.SettingsPage;
 

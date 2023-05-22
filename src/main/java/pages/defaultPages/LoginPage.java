@@ -3,14 +3,12 @@ package pages.defaultPages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.selector.ByTagAndText;
+import config.AccountData;
 import exceptions.PageTypeException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 import pages.Page;
 import webApplication.ApplicationRoute;
-
-import static com.codeborne.selenide.Selectors.withTagAndText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage extends Page {
@@ -39,7 +37,7 @@ public class LoginPage extends Page {
 
     public void loginByAdmin() throws PageTypeException { // данные убрать
         LoginPage loginPage = ApplicationRoute.getLoginPage();
-        loginPage.login("root", "8962615k");
+        loginPage.login(AccountData.ADMIN_LOGIN, AccountData.ADMIN_PASSWORD);
     }
 
     public void errorLabelIsNotExist(){

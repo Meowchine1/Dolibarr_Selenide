@@ -1,12 +1,9 @@
 package webApplication;
-
-import com.codeborne.selenide.Selenide;
-import config.Hrefs;
 import exceptions.PageTypeException;
 import pages.PagePool;
 import pages.PageType;
 import pages.defaultPages.*;
-import pages.defaultPages.settings.CompanyPage;
+import pages.defaultPages.CompanyPage;
 import pages.defaultPages.settings.ModulesPage;
 import pages.defaultPages.settings.SettingsPage;
 

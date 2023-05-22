@@ -14,7 +14,7 @@ public class SearchTests extends Start {
         usersAndGroupsPage
                 .openUserListPage()
                 .setSearchFirstnameField(name)
-                .getSearchResults();
+                .searchResults();
         Assert.assertTrue(usersAndGroupsPage.assertionSearchByName(name));
     }
 

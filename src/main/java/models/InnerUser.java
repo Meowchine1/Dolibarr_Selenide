@@ -1,6 +1,5 @@
-package data.factory.models;
-import data.factory.models.config.Sex;
-import lombok.Builder;
+package models;
+
 import lombok.Getter;
 import lombok.Setter;
 

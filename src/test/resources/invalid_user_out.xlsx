@@ -1,0 +1,9 @@
+name	email	address	zipCode	city	phone	lastname	login	password	fax	isAdmine	isEmployee	jobTitle
+name_51	email_256	address_256	zipCode_31	city_51	letter	lastname_51	space	password_33	letter	true	false	num
+name_51	email_256	address_256	letter	num	phone_31	lastname_51	space	password_33	fax_21	false	true	jobTitle
+name_51	email_256	address_256	zipCode_31	city_51	phone_31	lastname_51	empty	password_33	fax_21	true	false	jobTitle
+name_51	email_256	address_256	letter	num	letter	lastname_51	empty	password_33	letter	false	true	num
+name_51	email_256	address_256	zipCode_31	num	letter	lastname_51	login_51	password_33	letter	true	true	jobTitle
+name_51	email_256	address_256	letter	city_51	phone_31	lastname_51	login_51	password_33	letter	false	false	num
+name_51	email_256	address_256	zipCode_31	city_51	letter	lastname_51	login_51	password_33	fax_21	false	true	num
+name_51	email_256	address_256	letter	num	phone_31	lastname_51	empty	password_33	fax_21	true	false	jobTitle

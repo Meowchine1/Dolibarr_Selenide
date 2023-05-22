@@ -9,6 +9,5 @@ public class Page {
 
     public void open(){
         Selenide.open(href);
-
     }
 }

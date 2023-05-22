@@ -6,10 +6,12 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import config.Hrefs;
 import exceptions.PageTypeException;
+import models.InnerUser;
 import org.openqa.selenium.By;
 import pages.Page;
 import webApplication.ApplicationRoute;
 
+import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -32,7 +34,6 @@ public class UsersAndGroupsPage extends Page  {
     CREATE_USER_ERROR_LABEL = $(".jnotify-message"),
     LOGIN_ERROR_LABEL = $(".error"),
     USER_RIGHTS_LABEL = $("#rights");
-
     //SEARCH FIELDS
     public static final SelenideElement
     SEARCH_LOGIN_INPUT_FIELD = $(By.xpath(".//input[@name='search_login']")),
@@ -41,15 +42,13 @@ public class UsersAndGroupsPage extends Page  {
     SEARCH_PHONE_INPUT_FIELD = $(By.xpath(".//input[@name='search_phonemobile']")),
     SEARCH_MAIL_INPUT_FIELD = $(By.xpath(".//input[@name='search_email']")),
     SEARCH_BUTTON = $(By.xpath(".//button[@name='button_search_x']")),
-
     DELETE_USER_BTN = $(withText("Удалить")),
     TURN_OFF_USER_BTN = $(withText("Выключать")),
     TURN_ON_USER_BTN = $(withText("Возобновить")),
     TURN_ACCEPT_BTN = $(withText("Да")),
+    NO_RIGHTS = $(withText("Доступ запрещен.")),
     USER_RIGHTS_BTN = $("#rights");
-
     ElementsCollection RIGHTS =  $$(By.xpath(".//td[@class='center']/a"));
-
     //TABLE
     private static int table_iterator = 3;
     private static SelenideElement TABLE_ROW = $(By.xpath(".//table//tr[" + table_iterator + "]")),
@@ -160,39 +159,53 @@ public class UsersAndGroupsPage extends Page  {
         return TABLE_ROW_PHONE.text().equals(phone);
     }
 
+
+
     public UsersAndGroupsPage(String href) {
         super(href);
     }
 
     public UsersAndGroupsPage setSearchLastnameField(String value) throws PageTypeException {
         SEARCH_LASTNAME_INPUT_FIELD.val(value);
-        getSearchResults();
+        searchResults();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
     public UsersAndGroupsPage setSearchFirstnameField(String value) throws PageTypeException {
         SEARCH_FIRSTNAME_INPUT_FIELD.val(value);
-        getSearchResults();
+        searchResults();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
     public UsersAndGroupsPage setSearchPhoneField(String value) throws PageTypeException {
         SEARCH_PHONE_INPUT_FIELD.val(value);
-        getSearchResults();
+        searchResults();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
     public UsersAndGroupsPage setSearchMailField(String value) throws PageTypeException {
         SEARCH_MAIL_INPUT_FIELD.val(value);
-        getSearchResults();
+        searchResults();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
     public UsersAndGroupsPage setSearchLoginField(String value) throws PageTypeException {
         SEARCH_LOGIN_INPUT_FIELD.val(value);
-        getSearchResults();
+        searchResults();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
 
-    private UsersAndGroupsPage getSearchResults() throws PageTypeException {
+    public UsersAndGroupsPage searchResults() throws PageTypeException {
         SEARCH_BUTTON.click();
         return ApplicationRoute.getUsersAndGroupsPage();
+    }
+
+    public int userListSize(){
+        int size = 0;
+        while(TABLE_ROW.is(Condition.exist)){
+            size++;
+            table_iterator +=1;
+            START_TABLE_HREF = $(By.xpath(".//table//tr["+table_iterator+"]//a"));
+            TABLE_ROW = $(By.xpath(".//table//tr[" + table_iterator + "]"));
+        }
+        table_iterator = 3;
+        return size;
     }
     public void getListInf(){
 
@@ -215,22 +228,27 @@ public class UsersAndGroupsPage extends Page  {
         return null;
     }
 
-    public UsersAndGroupsPage createUser(String name, String lastname, String login, String password,
-                                         String address, String zipcode, String phone, Boolean isAdmin, Boolean isEmployee,
-                                         String fax, String email, String city) throws PageTypeException {
+    public UsersAndGroupsPage createStubUser(InnerUser user) throws PageTypeException {
         Selenide.open(Hrefs.CREATE_USER_HREF);
-        LASTNAME_INPUT_FIELD.setValue(lastname);
-        FIRSTNAME_INPUT_FIELD.setValue(name);
-        LOGIN_INPUT_FIELD.setValue(login);
-        setIsAdmin(isAdmin);
-        setIsEmployee(isEmployee);
-        PASSWORD_INPUT_FIELD.setValue(password);
-        ADDRESS_TEXTAREA.setValue(address);
-        ZIPCODE_INPUT_FIELD.setValue(zipcode);
-        CITY_INPUT_FIELD.setValue(city);
-        PHONE_INPUT_FIELD.setValue(phone);
-        FAX_INPUT_FIELD.setValue(fax);
-        EMAIL_INPUT_FIELD.setValue(email);
+        LOGIN_INPUT_FIELD.setValue(user.getLogin());
+        PASSWORD_INPUT_FIELD.setValue(user.getPassword());
+        return ApplicationRoute.getUsersAndGroupsPage();
+    }
+
+    public UsersAndGroupsPage createUser(InnerUser user) throws PageTypeException {
+        Selenide.open(Hrefs.CREATE_USER_HREF);
+        LASTNAME_INPUT_FIELD.setValue(user.getLastname());
+        FIRSTNAME_INPUT_FIELD.setValue(user.getName());
+        LOGIN_INPUT_FIELD.setValue(user.getLogin());
+        setIsAdmin(user.getIsAdmine());
+        setIsEmployee(user.getIsEmployee());
+        PASSWORD_INPUT_FIELD.setValue(user.getPassword());
+        ADDRESS_TEXTAREA.setValue(user.getAddress());
+        ZIPCODE_INPUT_FIELD.setValue(user.getZipCode());
+        CITY_INPUT_FIELD.setValue(user.getCity());
+        PHONE_INPUT_FIELD.setValue(user.getPhone());
+        FAX_INPUT_FIELD.setValue(user.getFax());
+        EMAIL_INPUT_FIELD.setValue(user.getEmail());
         SAVE_USER_BUTTON.click();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
@@ -275,8 +293,9 @@ public class UsersAndGroupsPage extends Page  {
         return null;
     }
 
-    public void showUserList(){
+    public UsersAndGroupsPage showUserList() throws PageTypeException {
         Selenide.open(Hrefs.USER_LIST_HREF);
+        return ApplicationRoute.getUsersAndGroupsPage();
     }
     public void showGroupList(){
         Selenide.open(Hrefs.GROUP_LIST_HREF);
@@ -287,5 +306,17 @@ public class UsersAndGroupsPage extends Page  {
     }
     public void loginUserErrorLabelExist(){
         LOGIN_ERROR_LABEL.shouldBe(Condition.visible);
+    }
+    public void cantAddNewUser(){
+        $(withText("Новый пользователь")).shouldNotHave(attribute("href"));
+    }
+    public void cantWatchUsers(){
+        $(withText("Список пользователей")).shouldNotHave(attribute("href"));
+    }
+    public void canAddNewUser(){
+        $(withText("Новый пользователь")).shouldHave(attribute("href"));
+    }
+    public void canWatchUsers(){
+        $(withText("Список пользователей")).shouldHave(attribute("href"));
     }
 }

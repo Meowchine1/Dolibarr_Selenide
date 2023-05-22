@@ -1,4 +1,4 @@
 package data.factory.models;
 
-public interface Document {
+public enum Visibility {
 }

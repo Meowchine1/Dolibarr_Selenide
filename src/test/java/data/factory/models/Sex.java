@@ -1,4 +1,4 @@
-package data.factory.models.config;
+package data.factory.models;
 
 public enum Sex {
     MALE,

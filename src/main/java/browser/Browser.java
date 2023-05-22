@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 
 public class Browser {
     private BrowserType browserType;
-
     public Browser(BrowserType browserType) {
         this.browserType = browserType;
     }

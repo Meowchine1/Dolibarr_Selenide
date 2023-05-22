@@ -1,15 +1,18 @@
 package data.dataProvider;
 
-import data.factory.models.InnerUser;
-import data.inputReader.InnerUserFactory;
+import data.inputReader.Analyzer;
+import models.Company;
+import models.InnerUser;
 import org.testng.annotations.DataProvider;
+import utils.Config;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class DataProviderClass {
     private static Object[][] realUsers;
+    private static Object[][] validCompany;
+    private static Object[][] invalidCompany;
     private static ArrayList<String> realLogins = new ArrayList<>();
     private static ArrayList<String> realNames = new ArrayList<>();
     private static ArrayList<String> realSurnames = new ArrayList<>();
@@ -35,13 +38,38 @@ public class DataProviderClass {
         res[0][0] = realUsers[0][0];
         return res;
     }
+@DataProvider(name = "validCompanyData")
+public static Object[][] validCompanyData() throws IOException {
+    Analyzer analyzer = new Analyzer(Config.VALID_COMPANY_PATH);
+    ArrayList<Company> validCompanyList = new ArrayList<>();
+    analyzer.companyGeneration(validCompanyList);
+    validCompany = new Object[validCompanyList.size()][1];
+    int i = 0;
+    for (Company company : validCompanyList) {
+        validCompany[i][0] = company;
+    }
+    return validCompany;
+}
+
+    @DataProvider(name = "invalidCompanyData")
+    public static Object[][] invalidCompanyData() throws IOException {
+        Analyzer analyzer = new Analyzer(Config.INVALID_COMPANY_PATH);
+        ArrayList<Company> invalidCompanyList = new ArrayList<>();
+        analyzer.companyGeneration(invalidCompanyList);
+        invalidCompany = new Object[invalidCompanyList.size()][1];
+        int i = 0;
+        for (Company company : invalidCompanyList) {
+            invalidCompany[i][0] = company;
+        }
+        return invalidCompany;
+    }
 
 
     @DataProvider(name = "validUsers")
     public static Object[][] validUsersData() throws IOException {
-        InnerUserFactory validUserFactory = new InnerUserFactory("src/test/java/data/inputReader/valid_user_out.xlsx");
+        Analyzer analyzer = new Analyzer(Config.VALID_USERS_PATH);
         ArrayList<InnerUser> validUserList = new ArrayList<>();
-        validUserFactory.userGeneration(validUserList);
+        analyzer.userGeneration(validUserList);
         realUsers = new Object[validUserList.size()][1];
         int i = 0;
         for (InnerUser user : validUserList) {
@@ -83,7 +111,7 @@ public class DataProviderClass {
 
     @DataProvider(name = "invalidUsers")
     public static Object[][] invalidUsersData() throws IOException {
-        InnerUserFactory invalidUserFactory = new InnerUserFactory("src/test/java/data/inputReader/invalid_user_out.xlsx");
+        Analyzer invalidUserFactory = new Analyzer(Config.INVALID_USERS_PATH);
         ArrayList<InnerUser> invalidUserList = new ArrayList<>();
         invalidUserFactory.userGeneration(invalidUserList);
 
@@ -106,6 +134,8 @@ public class DataProviderClass {
         }
         return data;
     }
+
+
 
 
 }

@@ -1,4 +1,4 @@
-package data.factory.models;
+package models;
 
 public class SaleOrders {
 }
