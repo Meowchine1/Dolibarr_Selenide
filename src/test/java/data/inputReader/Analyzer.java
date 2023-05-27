@@ -23,9 +23,16 @@ public class Analyzer {
         this.FILE_PATH = FILE_PATH;
     }
 
+    public Analyzer() {
+    }
+
     private void readXlsxFile() throws IOException {
         Reader reader = new Reader(FILE_PATH);
-        parameters = reader.getHashMapFromXlsxFile();
+        parameters = reader.getHashMapFromXlsFile();
+    }
+
+    public String getImagePath(String imagePath) {
+        return Config.PATH_TO_DIRECTORY + imagePath ;
     }
 
     public void companyGeneration(ArrayList<Company> companyList) throws IOException {
@@ -46,7 +53,6 @@ public class Analyzer {
                     case ("address") -> company.setAddress(getKeywordValue(value.get(i)));
                     case ("zipCode") -> company.setZipCode(getKeywordValue(value.get(i)));
                     case ("fax") -> company.setFax(getKeywordValue(value.get(i)));
-                    case ("logo") -> company.setLogoPath(getLogoPath(value.get(i)));
                 }
 
             }
@@ -97,14 +103,14 @@ public class Analyzer {
             String[] tmp = keyword.split("_");
             paramName = tmp[0];
             size = Integer.parseInt(tmp[1]);
-            return switch (paramName) { // Ð¾Ð´Ð¸Ð½Ð°ÐºÐ¾Ð²Ð²Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ
-                case ("name") -> getRandomString(size);  // Ð±ÑƒÐºÐ²Ñ‹
-                case ("phone") -> getRandomString(size); // Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½Ð°
-                case ("email") -> getRandomString(size); // Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ð¼ÐµÐ¹Ð»Ð°
+            return switch (paramName) { // îäèíàêîââå äàííûå
+                case ("name") -> getRandomString(size);  // áóêâû
+                case ("phone") -> getRandomString(size); // ôîðìàò òåëåôîíà
+                case ("email") -> getRandomString(size); // ôîðìàò ìåéëà
                 case ("address") -> getRandomString(size);
-                case ("zipcode") -> getRandomString(size); // Ñ†Ð¸Ñ„Ñ€Ñ‹
+                case ("zipcode") -> getRandomString(size); // öèôðû
                 case ("login") -> getRandomString(size);
-                case ("lastname") -> getRandomString(size); // Ð±ÑƒÐºÐ²Ñ‹
+                case ("lastname") -> getRandomString(size); // áóêâû
                 case ("password") -> getRandomString(size);
                 default -> "";
 
@@ -146,10 +152,5 @@ public class Analyzer {
                 .toString();
         return generatedString;
     }
-
-    private String getLogoPath(String imagePath) {
-        return Config.PATH_TO_DIRECTORY + imagePath ;
-    }
-
 
 }

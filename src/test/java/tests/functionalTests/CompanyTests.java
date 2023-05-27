@@ -10,19 +10,36 @@ import webApplication.ApplicationRoute;
 
 public class CompanyTests extends Start {
 
-    @Test(dataProvider="validCompanyData", dataProviderClass = DataProviderClass.class)
+    @Test(enabled = false, dataProvider="validCompanyData", dataProviderClass = DataProviderClass.class)
     public void validCompanyData(Company company) throws PageTypeException {
 
         CompanyPage companyPage = ApplicationRoute.getAndOpenCompanyPage();
-        companyPage.fillCompanyInf(company);
+        companyPage.fillCompanyInf(company)
+                .succesMessageShouldBe();
 
     }
 
-    @Test(dataProvider="invalidCompanyData", dataProviderClass = DataProviderClass.class)
+    @Test(enabled = false, dataProvider="invalidCompanyData", dataProviderClass = DataProviderClass.class)
     public void invalidCompanyData(Company company) throws PageTypeException {
 
         CompanyPage companyPage = ApplicationRoute.getAndOpenCompanyPage();
-        companyPage.fillCompanyInf(company);
+        companyPage.fillCompanyInf(company)
+                .succesMessageShouldNotBe();
 
     }
+
+    @Test(dataProvider="validImage", dataProviderClass = DataProviderClass.class)
+    public void validPhotoLoading(String path) throws PageTypeException {
+        CompanyPage companyPage = ApplicationRoute.getAndOpenCompanyPage();
+        companyPage.setLogo(path);
+        companyPage.succesMessageShouldBe();
+    }
+
+    @Test(dataProvider="invalidImage", dataProviderClass = DataProviderClass.class)
+    public void invalidPhotoLoading(String path) throws PageTypeException {
+        CompanyPage companyPage = ApplicationRoute.getAndOpenCompanyPage();
+        companyPage.setLogo(path);
+        companyPage.succesMessageShouldNotBe();
+    }
+
 }

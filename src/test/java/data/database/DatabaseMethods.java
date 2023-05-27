@@ -14,33 +14,30 @@ public class DatabaseMethods {
 
     private DatabaseConnection databaseConnection;
     private static  Statement statement;
-    private static String table = "llx_user";
-    private static String filterParam = "login";
-    private static String filterParamVal = "root";
-    private static String goalParam = "email";
-    private static String queryTemplate = "select " + goalParam + " from " + table + " where "+ filterParam +"='"+ filterParamVal +"';";
+    private static final String USER_TABEL = "llx_user";
+    private static final String THIRDPARTIES_TABEL = "llx_societe";
 
     public DatabaseMethods() throws SQLException {
         databaseConnection = DatabaseConnection.getInstance();
         statement = databaseConnection.connection.createStatement();
     }
 
-    public void printDbInf() throws SQLException {
-        String getAllUsersQuery = queryTemplate;
-        ResultSet rs = statement.executeQuery(getAllUsersQuery);
+    public void executeQuery(String query) throws SQLException {
+        ResultSet rs = statement.executeQuery(query);
         while (rs.next()) {
-        System.out.println(rs.getString(goalParam));
+            System.out.println(rs.getString("lastname"));
         }
-    }
 
+    }
+    private static String setQuery(String _table, String _goalParam, String _filterParam, String _filterParamValue ){
+        return "select " + _goalParam + " from " + _table + " where "+ _filterParam +"='"+ _filterParamValue +"';";
+    }
     public boolean testParamValue(String _table, String _goalParam, String _goalParamVal, String _filterParam, String _filterParamValue ) throws SQLException {
-        filterParam = _filterParam;
-        filterParamVal = _filterParamValue;
-        goalParam = _goalParam;
-        table = _table;
-        String testQuery = queryTemplate;
-        ResultSet rs = statement.executeQuery(testQuery);
-        while (rs.next()){
+
+        String query = setQuery(_table, _goalParam, _filterParam, _filterParamValue ) ;
+        System.out.println(query);
+        ResultSet rs = statement.executeQuery(query);
+        if (rs.next()){
             return rs.getString(_goalParam).equals(_goalParamVal);
         }
          return false;
@@ -71,6 +68,9 @@ public class DatabaseMethods {
     }
 
     public static void main(String[] args) throws SQLException {
+        String query = "select lastname from llx_user where login='root';";
+        DatabaseMethods databaseMethods = new DatabaseMethods();
+        databaseMethods.testParamValue("llx_user", "lastname", "SuperAdmin", "login", "root");
 
     }
 

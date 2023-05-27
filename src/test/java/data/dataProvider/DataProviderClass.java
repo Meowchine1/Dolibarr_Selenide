@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 public class DataProviderClass {
     private static Object[][] realUsers;
-    private static Object[][] validCompany;
-    private static Object[][] invalidCompany;
     private static ArrayList<String> realLogins = new ArrayList<>();
     private static ArrayList<String> realNames = new ArrayList<>();
     private static ArrayList<String> realSurnames = new ArrayList<>();
@@ -43,10 +41,11 @@ public static Object[][] validCompanyData() throws IOException {
     Analyzer analyzer = new Analyzer(Config.VALID_COMPANY_PATH);
     ArrayList<Company> validCompanyList = new ArrayList<>();
     analyzer.companyGeneration(validCompanyList);
-    validCompany = new Object[validCompanyList.size()][1];
+    Object[][] validCompany = new Object[validCompanyList.size()][1];
     int i = 0;
     for (Company company : validCompanyList) {
         validCompany[i][0] = company;
+        i++;
     }
     return validCompany;
 }
@@ -56,14 +55,54 @@ public static Object[][] validCompanyData() throws IOException {
         Analyzer analyzer = new Analyzer(Config.INVALID_COMPANY_PATH);
         ArrayList<Company> invalidCompanyList = new ArrayList<>();
         analyzer.companyGeneration(invalidCompanyList);
-        invalidCompany = new Object[invalidCompanyList.size()][1];
+        Object[][] invalidCompany = new Object[invalidCompanyList.size()][1];
         int i = 0;
         for (Company company : invalidCompanyList) {
             invalidCompany[i][0] = company;
+            i++;
         }
         return invalidCompany;
     }
 
+    @DataProvider(name = "validImage")
+    public static Object[][] validImage() throws IOException {
+        Analyzer analyzer = new Analyzer();
+        String[] validImagesNames = {"2000.jpg", "2048.png"};
+        Object[][] validImage = new Object[validImagesNames.length][1];
+        int i = 0;
+        for(String path : validImagesNames){
+            validImage[i][0] = analyzer.getImagePath(path);
+            i++;
+        }
+        return validImage;
+    }
+
+    @DataProvider(name = "invalidImage")
+    public static Object[][] invalidImage() throws IOException {
+        Analyzer analyzer = new Analyzer();
+        String[] invalidImagesNames = {"2049.jpeg"};
+        Object[][] invalidImage = new Object[invalidImagesNames.length][1];
+        int i = 0;
+        for(String path : invalidImagesNames){
+            invalidImage[i][0] = analyzer.getImagePath(path);
+            i++;
+        }
+        return invalidImage;
+    }
+
+    @DataProvider(name = "testvalidUsers")
+    public static Object[][] testvalidUsersData() throws IOException {
+        Analyzer analyzer = new Analyzer(Config.VALID_USERS_PATH);
+        ArrayList<InnerUser> validUserList = new ArrayList<>();
+        analyzer.userGeneration(validUserList);
+        realUsers = new Object[1][1];
+        int i = 0;
+        for (InnerUser user : validUserList) {
+            realUsers[i][0] = user;
+            return realUsers;
+        }
+        return new Object[0][];
+    }
 
     @DataProvider(name = "validUsers")
     public static Object[][] validUsersData() throws IOException {

@@ -12,6 +12,7 @@ import webApplication.ApplicationRoute;
 import java.io.IOException;
 import java.util.Map;
 
+//llx_societe
 public class ThirdPartiesTests extends Start {
 //    @Test
 //    public void registerExternalUserAndLoginHim() throws PageTypeException {

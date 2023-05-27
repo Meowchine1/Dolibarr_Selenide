@@ -5,46 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39df4013-640f-4a0b-ab90-e1938a8d9ae7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/config/AccountData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Company.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/CompanyTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/utils/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/invalid_companyDescription_out.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/invalid_user_out.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/valid_companyDescription_out.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/valid_user_out.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/invalid_third_out.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/valid_third_out.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/browser/Browser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/browser/Browser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commonObjects/Header.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/Page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/PagePool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/PagePool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/config/AccountData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/AccountData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/CompanyPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/CompanyPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/UsersAndGroupsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/UsersAndGroupsPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/settings/CompanyPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/CompanyPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/settings/SettingsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/settings/SettingsPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/webApplication/ApplicationRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webApplication/ApplicationRoute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/baseTest/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/baseTest/Start.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/data/dataProvider/DataProviderClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/dataProvider/DataProviderClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/data/database/DatabaseMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/database/DatabaseMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/dataGeneration/DataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/factory/dataGeneration/DataFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/Document.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/ExternalUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/InnerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/InnerUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/SaleOrders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/SaleOrders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/ThirdPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/ThirdPart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/config/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/factory/models/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/config/Sex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/factory/models/Sex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/factory/models/config/Visibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/factory/models/Visibility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/inputReader/Analizer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/inputReader/InnerUserFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/inputReader/Analyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/inputReader/invalid_user_out.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/inputReader/valid_user_out.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/SearchTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/SearchTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/data/inputReader/Analyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/inputReader/Analyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/data/inputReader/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/inputReader/Reader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/CompanyTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/CompanyTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/GithubTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/ThirdPartiesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/ThirdPartiesTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/UserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/UserTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utils/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/invalid_companyDescription_out.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/invalid_companyDescription_out.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/invalid_user_out.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/invalid_user_out.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/valid_companyDescription_out.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/valid_companyDescription_out.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/valid_user_out.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/valid_user_out.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +87,7 @@
       <recent name="tests.functionalTests" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DatabaseMethods">
+  <component name="RunManager" selected="TestNG.C:/Users/Воронина/IdeaProjects/testTESTNGdevend/src/test/java/testng.xml">
     <configuration name="DatabaseMethods" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="data.database.DatabaseMethods" />
       <module name="testTESTNGdevend.test" />
@@ -169,8 +150,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DatabaseMethods" />
         <item itemvalue="TestNG.C:/Users/Воронина/IdeaProjects/testTESTNGdevend/src/test/java/testng.xml" />
+        <item itemvalue="Application.DatabaseMethods" />
         <item itemvalue="Application.testDb" />
         <item itemvalue="Application.Start" />
         <item itemvalue="TestNG.Testing" />
@@ -241,6 +222,20 @@
     <option name="LAST_COMMIT_MESSAGE" value="add user tests" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pages/defaultPages/CompanyPage.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pages/defaultPages/UsersAndGroupsPage.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="data.inputReader.InnerUserFactory" memberName="parameters" />

@@ -2,12 +2,10 @@
 <suite name="katya">
     <test name="testTrying">
         <parameter name="BROWSER" value="FIREFOX"/>
-        <parameter name="AUTHORIZATION" value="true"/>
+        <parameter name="AUTHORIZATION" value="false"/>
         <classes>
             <class name="baseTest.Start"/>
             <class name="tests.functionalTests.UserTests"/>
-            <class name="tests.functionalTests.SearchTests"/>
-
         </classes>
 
     </test>

@@ -1,5 +1,6 @@
 package data.inputReader;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -17,7 +18,7 @@ public class Reader {
         this.FILE_NAME = FILE_NAME;
     }
 
-    public HashMap<String, ArrayList<String>> getHashMapFromXlsxFile() throws IOException {
+    public HashMap<String, ArrayList<String>> getHashMapFromXlsFile() throws IOException {
         HashMap<String, ArrayList<String>> result = new HashMap<>();
         DataFormatter formatter = new DataFormatter();
 
