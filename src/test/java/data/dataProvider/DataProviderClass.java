@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class DataProviderClass {
     private static Object[][] realUsers;
+    private static Object[][] oneValidUser;
     private static ArrayList<String> realLogins = new ArrayList<>();
     private static ArrayList<String> realNames = new ArrayList<>();
     private static ArrayList<String> realSurnames = new ArrayList<>();
@@ -30,11 +31,17 @@ public class DataProviderClass {
         return user.getPhone().length() > 0 & !user.getPhone().contains(" ");
     }
 
+    @DataProvider(name = "oneValidUserTest")
+    public static Object[][] oneValidUserTest(){
+        oneValidUser = realUsers;
+        return oneValidUser;
+    }
+
     @DataProvider(name = "oneValidUser")
     public static Object[][] oneValidUser(){
-        Object[][] res = new Object[1][1];
-        res[0][0] = realUsers[0][0];
-        return res;
+        oneValidUser = new Object[1][1];
+        oneValidUser[0][0] = realUsers[0][0];
+        return oneValidUser;
     }
 @DataProvider(name = "validCompanyData")
 public static Object[][] validCompanyData() throws IOException {
@@ -110,6 +117,7 @@ public static Object[][] validCompanyData() throws IOException {
         ArrayList<InnerUser> validUserList = new ArrayList<>();
         analyzer.userGeneration(validUserList);
         realUsers = new Object[validUserList.size()][1];
+
         int i = 0;
         for (InnerUser user : validUserList) {
             realUsers[i][0] = user;

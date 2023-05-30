@@ -4,27 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39df4013-640f-4a0b-ab90-e1938a8d9ae7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/invalid_third_out.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/valid_third_out.xlsx" afterDir="false" />
+    <list default="true" id="39df4013-640f-4a0b-ab90-e1938a8d9ae7" name="Changes" comment="add user tests">
+      <change afterPath="$PROJECT_DIR$/src/test/java/data/database/DbLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/data/database/log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/Comercial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/AccountData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/AccountData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/CompanyPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/CompanyPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/browser/Browser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/browser/Browser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/defaultPages/UsersAndGroupsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/defaultPages/UsersAndGroupsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/data/dataProvider/DataProviderClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/dataProvider/DataProviderClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/data/database/DatabaseMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/database/DatabaseMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/inputReader/Analyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/inputReader/Analyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/inputReader/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/inputReader/Reader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testng.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/CompanyTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/CompanyTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/GithubTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/ProductsTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/SearchTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/ThirdPartiesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/ThirdPartiesTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/UserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/functionalTests/UserTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/invalid_companyDescription_out.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/invalid_companyDescription_out.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/invalid_user_out.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/invalid_user_out.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/valid_companyDescription_out.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/valid_companyDescription_out.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/functionalTests/testDb.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/valid_user_out.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/valid_user_out.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +34,37 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="testTESTNGdevend" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="testTESTNGdevend" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="testTESTNGdevend" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -78,6 +107,8 @@
       <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend\build" />
+      <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend" />
       <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend\src\test\resources" />
       <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend\src" />
       <recent name="C:\Users\Воронина\IdeaProjects\testTESTNGdevend\src\main" />
@@ -87,9 +118,9 @@
       <recent name="tests.functionalTests" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.C:/Users/Воронина/IdeaProjects/testTESTNGdevend/src/test/java/testng.xml">
-    <configuration name="DatabaseMethods" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="data.database.DatabaseMethods" />
+  <component name="RunManager" selected="Gradle.testTESTNGdevend [allureReport]">
+    <configuration name="DbLogger" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="data.database.DbLogger" />
       <module name="testTESTNGdevend.test" />
       <extension name="coverage">
         <pattern>
@@ -101,31 +132,68 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="baseTest.Start" />
-      <module name="testTESTNGdevend.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="baseTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="testTESTNGdevend [allureReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="allureReport" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
-    <configuration name="testDb" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tests.functionalTests.testDb" />
-      <module name="testTESTNGdevend.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.functionalTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="testTESTNGdevend [allureServe]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="allureServe" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="testTESTNGdevend [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="check" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="C:/Users/Воронина/IdeaProjects/testTESTNGdevend/src/test/java/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="testTESTNGdevend.test" />
@@ -137,24 +205,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Testing" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="testTESTNGdevend.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Testing" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.testTESTNGdevend [allureReport]" />
         <item itemvalue="TestNG.C:/Users/Воронина/IdeaProjects/testTESTNGdevend/src/test/java/testng.xml" />
-        <item itemvalue="Application.DatabaseMethods" />
-        <item itemvalue="Application.testDb" />
-        <item itemvalue="Application.Start" />
-        <item itemvalue="TestNG.Testing" />
+        <item itemvalue="Gradle.testTESTNGdevend [allureServe]" />
+        <item itemvalue="Gradle.testTESTNGdevend [check]" />
+        <item itemvalue="Application.DbLogger" />
       </list>
     </recent_temporary>
   </component>
@@ -212,6 +269,17 @@
     <option name="localTasksCounter" value="7" />
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="database backup" />
     <MESSAGE value="database backup is done" />
@@ -231,8 +299,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pages/defaultPages/UsersAndGroupsPage.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="10" />
+          <line>127</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

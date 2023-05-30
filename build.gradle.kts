@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("io.qameta.allure") version "2.9.6"
 }
 
 group = "org.example"
@@ -35,8 +36,15 @@ dependencies {
     testImplementation("org.apache.poi:poi-ooxml:$excelVersion")
 
     //ALLURE
+    runtimeOnly("org.aspectj:aspectjweaver:1.9.5")
     implementation("io.qameta.allure:allure-selenide:$allureVersion")
     implementation("io.qameta.allure:allure-java-commons:$allureVersion")
+    implementation("io.github.bonigarcia:webdrivermanager:5.3.3")
+    testImplementation("io.qameta.allure:allure-junit5:$allureVersion")
+    testImplementation("io.qameta.allure:allure-testng:$allureVersion")
+    testImplementation("io.qameta.allure:allure-comandline:$allureVersion")
+    testImplementation("io.qameta.allure:allure-assertj:$allureVersion")
+
 
     //JAVAFAKER (RANDOM DATA)
     testImplementation("com.github.javafaker:javafaker:1.0.2")

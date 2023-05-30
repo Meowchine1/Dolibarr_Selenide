@@ -13,10 +13,10 @@ import webApplication.ApplicationRoute;
 
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selectors.withText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class UsersAndGroupsPage extends Page  {
+    private static final ElementsCollection SEARCH_RESULT = $$(By.xpath(".//tr[@class='oddeven']"));
     private static final SelenideElement
     LASTNAME_INPUT_FIELD = $(By.xpath("//input[@name='lastname']")),
     FIRSTNAME_INPUT_FIELD = $(By.xpath("//input[@name='firstname']")),
@@ -61,10 +61,10 @@ public class UsersAndGroupsPage extends Page  {
     private static final ElementsCollection TABLE_ELEMENTS = $$(By.xpath(".//span[@class='nopadding usertext']"));
     private static ElementsCollection TABLE_HREFS = $$(By.xpath(".//td[@class='nowraponall tdoverflowmax150']/a"));
 
-    private final int watchUsersData = 1,
-            createUser = 2,
-            deleteUser = 4,
-            changeOwnPassword = 6;
+    private final int watchUsersData = 0,
+            createUser = 1,
+            deleteUser = 3,
+            changeOwnPassword = 5;
 
     public boolean allowWatchUserData(String login){
         if (clickByUser(login)) {
@@ -104,8 +104,9 @@ public class UsersAndGroupsPage extends Page  {
 
     public boolean clickByUser(String login){
         int href_index = 0;
+        String substringForSearch = login.substring(0, 10);
         for(SelenideElement el: TABLE_ELEMENTS){
-            if(el.text().equals(login)){
+            if(el.text().contains(substringForSearch)){
                 TABLE_HREFS.get(href_index).click();
                 return true;
             }
@@ -126,7 +127,12 @@ public class UsersAndGroupsPage extends Page  {
     public boolean turnOffUser(String login){
         if (clickByUser(login)){
             TURN_OFF_USER_BTN.click();
-            TURN_ACCEPT_BTN.click();
+
+//            executeJavaScript("document.getElementById('topmenuloginmoreinfo').type='display';");
+//
+//
+//            TURN_ACCEPT_BTN.click();
+
             return true;
         }
         return false;
@@ -159,7 +165,9 @@ public class UsersAndGroupsPage extends Page  {
         return TABLE_ROW_PHONE.text().equals(phone);
     }
 
-
+public int searchResultCount(){
+        return SEARCH_RESULT.size();
+}
 
     public UsersAndGroupsPage(String href) {
         super(href);
@@ -230,8 +238,11 @@ public class UsersAndGroupsPage extends Page  {
 
     public UsersAndGroupsPage createStubUser(InnerUser user) throws PageTypeException {
         Selenide.open(Hrefs.CREATE_USER_HREF);
+        LASTNAME_INPUT_FIELD.setValue("FAKE");
+        FIRSTNAME_INPUT_FIELD.setValue("fake");
         LOGIN_INPUT_FIELD.setValue(user.getLogin());
         PASSWORD_INPUT_FIELD.setValue(user.getPassword());
+        SAVE_USER_BUTTON.click();
         return ApplicationRoute.getUsersAndGroupsPage();
     }
 
@@ -308,15 +319,15 @@ public class UsersAndGroupsPage extends Page  {
         LOGIN_ERROR_LABEL.shouldBe(Condition.visible);
     }
     public void cantAddNewUser(){
-        $(withText("Новый пользователь")).shouldNotHave(attribute("href"));
+        $(By.xpath(".//a[@title='Новый пользователь']")).shouldNotHave(attribute("href"));
     }
     public void cantWatchUsers(){
-        $(withText("Список пользователей")).shouldNotHave(attribute("href"));
+        $(By.xpath(".//a[@title='Пользователи и Группы']")).shouldNotHave(attribute("href"));
     }
     public void canAddNewUser(){
-        $(withText("Новый пользователь")).shouldHave(attribute("href"));
+        $(By.xpath(".//a[@title='Новый пользователь']")).shouldHave(attribute("href"));
     }
     public void canWatchUsers(){
-        $(withText("Список пользователей")).shouldHave(attribute("href"));
+        $(By.xpath(".//a[@title='Список пользователей']")).shouldHave(attribute("href"));
     }
 }

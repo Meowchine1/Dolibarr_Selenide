@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <suite name="katya">
-    <test name="testTrying">
+    <test name="User_FIREFOX">
         <parameter name="BROWSER" value="FIREFOX"/>
-        <parameter name="AUTHORIZATION" value="false"/>
+        <parameter name="AUTHORIZATION" value="true"/>
         <classes>
             <class name="baseTest.Start"/>
-            <class name="tests.functionalTests.UserTests"/>
+            <class name="tests.functionalTests.Comercial"/>
         </classes>
-
     </test>
+
 </suite>

@@ -20,8 +20,8 @@ public class LoginPage extends Page {
             MENU = $(".mainmenuaspan"),
             DROPDOWN_MENU = $(By.xpath(".//a[@data-toggle='dropdown']")),
             LOGOUT = $(By.xpath(".//a[@title='Выход']")),
-            ERROR_LABEL = $(".error"),
-            SUCCESS_LABEL = $(withText("Моя Информ-панель"));
+            SUCCESS_LABEL = $(withText("Моя Информ-панель")),
+            ERROR_LABEL = $(withText("Плохо стоимости логин или пароль"));
 
     public LoginPage(String href) {
         super(href);
@@ -47,8 +47,13 @@ public class LoginPage extends Page {
     }
 
     public void errorLabelIsExist(){
-        SUCCESS_LABEL.shouldNotBe(Condition.exist);
+        ERROR_LABEL.shouldBe(Condition.exist);
     }
+
+    public void successLabelIsExist(){
+        SUCCESS_LABEL.shouldBe(Condition.exist);
+    }
+
 
     public LoginPage logout() throws PageTypeException {
         Actions actions = new Actions(WebDriverRunner.getWebDriver());

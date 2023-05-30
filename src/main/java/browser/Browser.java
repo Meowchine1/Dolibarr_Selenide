@@ -14,7 +14,7 @@ public class Browser {
     }
 
     public void initDriver(){
-        Configuration.browser = browserType.toString().toLowerCase();
+        Configuration.browser =  browserType.toString().toLowerCase();
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());

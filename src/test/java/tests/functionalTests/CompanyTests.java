@@ -10,7 +10,7 @@ import webApplication.ApplicationRoute;
 
 public class CompanyTests extends Start {
 
-    @Test(enabled = false, dataProvider="validCompanyData", dataProviderClass = DataProviderClass.class)
+    @Test(enabled = true, dataProvider="validCompanyData", dataProviderClass = DataProviderClass.class)
     public void validCompanyData(Company company) throws PageTypeException {
 
         CompanyPage companyPage = ApplicationRoute.getAndOpenCompanyPage();
@@ -19,7 +19,7 @@ public class CompanyTests extends Start {
 
     }
 
-    @Test(enabled = false, dataProvider="invalidCompanyData", dataProviderClass = DataProviderClass.class)
+    @Test(enabled = true, dataProvider="invalidCompanyData", dataProviderClass = DataProviderClass.class)
     public void invalidCompanyData(Company company) throws PageTypeException {
 
         CompanyPage companyPage = ApplicationRoute.getAndOpenCompanyPage();
